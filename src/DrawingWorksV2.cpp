@@ -53,6 +53,7 @@ bool isButtonPressed;
 Input InputManager = Input(_inputHandle, buttons);
 
 void HandleInput();
+void clearscreen();
 void resetscreen();
 
 void logxy(COORD coord);
@@ -207,6 +208,21 @@ void HandleInput()
 
 void resetscreen()
 {
+	clearscreen();
+
+	//Redraw controls
+	Utils::DrawWString(0, 0, 15, header);
+
+	////Redraw reset button
+	//Utils::drawpixel(buttonX, buttonY, 15);
+	//Utils::Drawtext(buttonX + 2, buttonY, 3, clearButtonDescription);
+
+	resetButton.DrawMe();
+	return;
+}
+
+void clearscreen()
+{
 	COORD coordScreen = { 0, 0 };
 	DWORD cCharsWritten;
 	CONSOLE_SCREEN_BUFFER_INFO csbi;
@@ -219,16 +235,6 @@ void resetscreen()
 	GetConsoleScreenBufferInfo(hConsole, &csbi);
 	FillConsoleOutputAttribute(hConsole, csbi.wAttributes, dwConSize, coordScreen, &cCharsWritten);
 	SetConsoleCursorPosition(hConsole, coordScreen);
-
-	//Redraw controls
-	Utils::DrawWString(0, 0, 15, header);
-
-	////Redraw reset button
-	//Utils::drawpixel(buttonX, buttonY, 15);
-	//Utils::Drawtext(buttonX + 2, buttonY, 3, clearButtonDescription);
-
-	resetButton.DrawMe();
-	return;
 }
 
 void logxy(COORD coord)

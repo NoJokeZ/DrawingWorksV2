@@ -342,28 +342,34 @@ void Utils::DrawFrameTopLeftSingleLined(int x, int y, int width, int height, int
 
 void Utils::DrawColorPalette()
 {
-	SetCursorPosition(0, 0);
 	for (int i = 0; i < 16; i++)
 	{
 		for (int j = 0; j < 16; j++)
 		{
 			setForeGroundAndBackGroundColor(i, j);
-			SetCursorPosition(i * 4, j); printf("%d", ((i) * (j)) + 1);
+			SetCursorPosition(i * 6, j); 
+			std::cout << i << "," << j;
 		}
+		setForeGroundAndBackGroundColor(7, 0);
+		SetCursorPosition(0, 17);
+		std::cout << "Forgroundcolor, backgroundcolor";
 	}
 }
 
 void Utils::DrawColorPalette(int x, int y)
 {
-	SetCursorPosition(x, y);
 	for (int i = x; i < 16 + x; i++)
 	{
 		for (int j = y; j < 16 + y; j++)
 		{
 			setForeGroundAndBackGroundColor(i - x, j - y);
-			SetCursorPosition(i * 4, j); printf("%d", ((i - x) * (j - y)) + 1);
+			SetCursorPosition(i * 6, j);
+			std::cout << i << "," << j;
 		}
 	}
+	setForeGroundAndBackGroundColor(7, 0);
+	SetCursorPosition(x, y + 17);
+	std::cout << "Forgroundcolor, backgroundcolor";
 }
 
 void Utils::DrawCharPalette()
