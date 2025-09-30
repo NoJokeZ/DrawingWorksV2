@@ -2,6 +2,5 @@
 C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.h(9,14): warning C4091: "static ": Ignoriert auf der linken Seite von "Utils", wenn keine Variable deklariert wurde
   (Quelldatei „src/DrawingWorksV2.cpp“ wird kompiliert)
   
-C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\DrawingWorksV2.cpp(39,48): warning C4267: "Initialisierung": Konvertierung von "size_t" nach "int", Datenverlust möglich
-C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\DrawingWorksV2.cpp(39,32): warning C4267: "Initialisierung": Konvertierung von "size_t" nach "const int", Datenverlust möglich
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\DrawingWorksV2.cpp(39,26): warning C4267: "Initialisierung": Konvertierung von "size_t" nach "int", Datenverlust möglich
   DrawingWorksV2.vcxproj -> C:\Users\pfall\Documents\GitHub\DrawingWorksV2\bin\x64\Debug\DrawingWorksV2.exe

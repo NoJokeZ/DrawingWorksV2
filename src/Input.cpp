@@ -9,6 +9,11 @@ Input::Input(HANDLE inputHandle, std::vector<Button*> buttons)
 	m_isButtonPressed = false;
 }
 
+void Input::EnableMouseInput()
+{
+
+}
+
 Event<>* Input::GetKeyInputEvent(WORD key)
 {
 	return &m_keyInputEvents[key];
@@ -55,11 +60,11 @@ void Input::HandleInput()
 		//Button hover handling
 		for (size_t i = 0; i < m_buttons.size(); i++)
 		{
-			if (PtInRect(&m_buttons[i]->Rect, point))
+			if (PtInRect(m_buttons[i]-> GetRect(), point))
 			{
 				m_buttons[i]->OnHoveredChanged(true);
 			}
-			else if (!PtInRect(&m_buttons[i]->Rect, point) && m_buttons[i]->IsHoveredOver)
+			else if (!PtInRect(m_buttons[i]-> GetRect(), point) && m_buttons[i]-> GetButtonHoverState())
 			{
 				m_buttons[i]->OnHoveredChanged(false);
 			}
@@ -70,7 +75,7 @@ void Input::HandleInput()
 		{
 			for (size_t i = 0; i < m_buttons.size(); i++)
 			{
-				if (PtInRect(&m_buttons[i]->Rect, point))
+				if (PtInRect(m_buttons[i]-> GetRect(), point))
 				{
 					m_buttons[i]->OnClicked();
 					m_isButtonPressed = TRUE;

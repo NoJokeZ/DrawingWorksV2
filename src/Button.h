@@ -10,13 +10,11 @@
 class Button
 {
 public:
-	RECT Rect;
+	Button(RECT* rect, std::wstring buttonName);
 
-	Event<> OnButtonClicked;
-
-	bool IsHoveredOver;
-
-	Button(RECT rect, std::wstring buttonName);
+	inline RECT* GetRect() { return m_rect; }
+	inline Event<>& GetOnButtonClickedEvent() { return m_onButtonClicked; }
+	inline bool GetButtonHoverState() { return m_isHoveredOver; }
 
 	void DrawMe();
 
@@ -25,8 +23,14 @@ public:
 	void OnHoveredChanged(bool value);
 
 private:
-	int m_iNameX;
-	int m_iNameY;
-	std::wstring m_sButtonName;
-};
+	int m_labelX { 0 };
+	int m_labelY { 0 };
 
+	std::wstring m_label {};
+
+	RECT* m_rect { nullptr };
+
+	Event<> m_onButtonClicked {};
+
+	bool m_isHoveredOver { false };
+};

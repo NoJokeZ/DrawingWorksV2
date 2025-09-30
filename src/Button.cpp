@@ -11,39 +11,37 @@
 #include <functional>
 
 
-Button::Button(RECT rect, std::wstring buttonName)
+Button::Button(RECT* rect, std::wstring buttonName)
 {
-	Rect = rect;
-	m_sButtonName = buttonName;
+	m_rect = rect;
+	m_label = buttonName;
 
-	m_iNameX = (rect.right + rect.left) / 2 - (buttonName.length() / 2);
-	m_iNameY = (rect.bottom + rect.top) / 2;
-
-	IsHoveredOver = false;
+	m_labelX = (m_rect->right + m_rect->left) / 2 - (buttonName.length() / 2);
+	m_labelY = (m_rect->bottom + m_rect->top) / 2;
 }
 
 void Button::DrawMe()
 {
-	Utils::drawframeTopLeftDoubleLined(Rect.left, Rect.top, Rect.right - Rect.left, Rect.bottom - Rect.top, 15);
-	Utils::DrawWtext(m_iNameX, m_iNameY, 15, m_sButtonName);
+	Utils::DrawFrameTopLeftDoubleLined(m_rect->left, m_rect->top, m_rect->right - m_rect->left, m_rect->bottom - m_rect->top, 15);
+	Utils::DrawWString(m_labelX, m_labelY, 15, m_label);
 }
 
 void Button::OnClicked()
 {
-	OnButtonClicked.Invoke();
-	IsHoveredOver = false;
+	m_onButtonClicked.Invoke();
+	m_isHoveredOver = false;
 }
 
 void Button::OnHoveredChanged(bool value)
 {
-	if (IsHoveredOver == value) return;
+	if (m_isHoveredOver == value) return;
 
-	IsHoveredOver = value;
+	m_isHoveredOver = value;
 
-	if (IsHoveredOver)
+	if (m_isHoveredOver)
 	{
-		Utils::drawframeTopLeftSingleLined(Rect.left, Rect.top, Rect.right - Rect.left, Rect.bottom - Rect.top, 9);
-		Utils::DrawWtext(m_iNameX, m_iNameY, 9, m_sButtonName);
+		Utils::DrawFrameTopLeftSingleLined(m_rect->left, m_rect->top, m_rect->right - m_rect->left, m_rect->bottom - m_rect->top, 9);
+		Utils::DrawWString(m_labelX, m_labelY, 9, m_label);
 	}
 	else
 	{

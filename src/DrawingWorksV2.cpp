@@ -36,7 +36,7 @@ const std::vector<std::wstring> header{   LR"(                                  
 										  LR"(╚══════════════════════════════════════════════════════════════════════════════╝)" };
 
 const std::string clearButtonDescription = "<--- Reset console \n";
-const int buttonX = 1, buttonY = header.size() + 1;
+int buttonX = 1, buttonY = header.size() + 1;
 
 HANDLE _outputHandle = GetStdHandle(STD_OUTPUT_HANDLE);
 HANDLE _inputHandle = GetStdHandle(STD_INPUT_HANDLE);
@@ -44,7 +44,7 @@ DWORD _consoleInputMode = (ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT | ENABLE_EXT
 
 CONSOLE_CURSOR_INFO _cci;
 
-Button resetButton = Button({ buttonX, buttonY, buttonX + 20, buttonY + 4 }, L"<Reset Console>");
+Button resetButton = Button(new RECT{buttonX, buttonY, buttonX + 20, buttonY + 4 }, L"<Reset Console>");
 
 std::vector<Button*> buttons = { &resetButton };
 
@@ -54,6 +54,7 @@ Input InputManager = Input(_inputHandle, buttons);
 
 void HandleInput();
 void resetscreen();
+
 void logxy(COORD coord);
 void logRect(RECT rect);
 
@@ -72,26 +73,26 @@ int main()
 {
 	_gameState = Initializing;
 
-	resetButton.OnButtonClicked += resetscreen;
+	resetButton.GetOnButtonClickedEvent() += resetscreen;
 
-	//Key events
-	*InputManager.GetKeyInputEvent(VK_F1) += Utils::ChangeConsoleToFullScreen;
-	*InputManager.GetKeyInputEvent(VK_F1) += resetscreen;
-	*InputManager.GetKeyInputEvent(VK_F2) += Utils::ChangeConsoleToWindowed;
-	*InputManager.GetKeyInputEvent(VK_F2) += resetscreen;
+	////Key events
+	//*InputManager.GetKeyInputEvent(VK_F1) += Utils::ChangeConsoleToFullScreen;
+	//*InputManager.GetKeyInputEvent(VK_F1) += resetscreen;
+	//*InputManager.GetKeyInputEvent(VK_F2) += Utils::ChangeConsoleToWindowed;
+	//*InputManager.GetKeyInputEvent(VK_F2) += resetscreen;
 
-	//Debug delete later
-	*InputManager.GetKeyInputEvent(VK_F5) += resetscreen;
-	*InputManager.GetKeyInputEvent(VK_F5) += []() {Utils::drawcolorpalette(); };
-	*InputManager.GetKeyInputEvent(VK_F6) += resetscreen;
-	*InputManager.GetKeyInputEvent(VK_F6) += []() {Utils::drawcharpalette(); };
+	////Debug delete later
+	//*InputManager.GetKeyInputEvent(VK_F5) += resetscreen;
+	//*InputManager.GetKeyInputEvent(VK_F5) += []() {Utils::drawcolorpalette(); };
+	//*InputManager.GetKeyInputEvent(VK_F6) += resetscreen;
+	//*InputManager.GetKeyInputEvent(VK_F6) += []() {Utils::drawcharpalette(); };
 
 
 	//Mouse events
 	//*InputManager.GetMouseInputEvent(Input::MouseInputType::LeftClick) += 
 
 	//Cursor settings
-	GetConsoleCursorInfo(_outputHandle, &_cci);
+	_cci.dwSize = 25;
 	_cci.bVisible = FALSE;
 	SetConsoleCursorInfo(_outputHandle, &_cci);
 
@@ -104,7 +105,9 @@ int main()
 
 	while (_gameState == Running)
 	{
-		InputManager.HandleInput();
+		//InputManager.HandleInput();
+
+		HandleInput();
 	}
 
 	return 0;
@@ -135,11 +138,11 @@ void HandleInput()
 
 		for (size_t i = 0; i < buttons.size(); i++)
 		{
-			if (PtInRect(&buttons[i]->Rect, point))
+			if (PtInRect(buttons[i]->GetRect(), point))
 			{
 				buttons[i]->OnHoveredChanged(true);
 			}
-			else if (!PtInRect(&buttons[i]->Rect, point) && buttons[i]->IsHoveredOver)
+			else if (!PtInRect(buttons[i]-> GetRect(), point) && buttons[i]-> GetButtonHoverState())
 			{
 				buttons[i]->OnHoveredChanged(false);
 			}
@@ -150,7 +153,7 @@ void HandleInput()
 		{
 			for (size_t i = 0; i < buttons.size(); i++)
 			{
-				if (PtInRect(&buttons[i]->Rect, point))
+				if (PtInRect(buttons[i]-> GetRect(), point))
 				{
 					buttons[i]->OnClicked();
 					isButtonPressed = TRUE;
@@ -163,28 +166,29 @@ void HandleInput()
 
 		if (inputRecord.Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED && inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_ALT_PRESSED)
 		{
-			Utils::drawcircle(coord.X, coord.Y, 4, rand() % 7 + 9);
+			Utils::DrawCircle(coord.X, coord.Y, 4, rand() % 7 + 9);
 		}
 		else if (inputRecord.Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED && inputRecord.Event.MouseEvent.dwControlKeyState & SHIFT_PRESSED)
 		{
-			Utils::drawframeMiddle(coord.X, coord.Y, 9, 5, rand() % 7 + 9);
+			Utils::DrawFrameCenter(coord.X, coord.Y, 9, 5, rand() % 7 + 9);
 		}
 		else if (inputRecord.Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED && inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_CTRL_PRESSED)
 		{
-			Utils::drawbigX(coord.X, coord.Y, 3, rand() % 7 + 9);
+			Utils::DrawBigX(coord.X, coord.Y, 3, rand() % 7 + 9);
 		}
 		else if (inputRecord.Event.MouseEvent.dwButtonState == FROM_LEFT_1ST_BUTTON_PRESSED)
 		{
-			Utils::drawpixel(coord.X, coord.Y, 15);
+			Utils::DrawPixel(coord.X, coord.Y, 15);
 		}
 		else if (inputRecord.Event.MouseEvent.dwButtonState == RIGHTMOST_BUTTON_PRESSED)
 		{
-			Utils::drawpixel(coord.X, coord.Y, rand() % 7 + 9);
+			Utils::DrawPixel(coord.X, coord.Y, rand() % 7 + 9);
 		}
 
 		break;
 		//Screen resize event
 	case WINDOW_BUFFER_SIZE_EVENT:
+		resetscreen();
 		break;
 		//Window focus event
 	case FOCUS_EVENT:
@@ -217,7 +221,7 @@ void resetscreen()
 	SetConsoleCursorPosition(hConsole, coordScreen);
 
 	//Redraw controls
-	Utils::DrawWtext(0, 0, 15, header);
+	Utils::DrawWString(0, 0, 15, header);
 
 	////Redraw reset button
 	//Utils::drawpixel(buttonX, buttonY, 15);
@@ -229,20 +233,20 @@ void resetscreen()
 
 void logxy(COORD coord)
 {
-	Utils::gotoxy(0, 0);
+	Utils::SetCursorPosition(0, 0);
 	std::cout << "X:" << coord.X << "  ";
-	Utils::gotoxy(7, 0);
+	Utils::SetCursorPosition(7, 0);
 	std::cout << "Y:" << coord.Y << "  ";
 }
 
 void logRect(RECT rect)
 {
-	Utils::gotoxy(20, 0);
+	Utils::SetCursorPosition(20, 0);
 	std::cout << "L:" << rect.left << "  ";
-	Utils::gotoxy(27, 0);
+	Utils::SetCursorPosition(27, 0);
 	std::cout << "T:" << rect.top << "  ";
-	Utils::gotoxy(34, 0);
+	Utils::SetCursorPosition(34, 0);
 	std::cout << "R:" << rect.right << "  ";
-	Utils::gotoxy(41, 0);
+	Utils::SetCursorPosition(41, 0);
 	std::cout << "B:" << rect.bottom << "  ";
 }

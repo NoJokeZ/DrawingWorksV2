@@ -28,6 +28,6 @@ public:
 
 
 private:
-	std::vector<std::function<void(Args...)>> m_subscribers;
+	std::vector<std::function<void(Args...)>> m_subscribers{};
 };
 

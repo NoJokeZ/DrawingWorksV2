@@ -30,6 +30,8 @@ public:
 
 	Input(HANDLE inputHandle, std::vector<Button*> buttons);
 
+	void EnableMouseInput();
+
 	Event<>* GetKeyInputEvent(WORD key);
 	Event<>* GetMouseInputEvent(MouseInputType inputType);
 	Event<>* GetSpecialInputEvent(WORD specialInputType);

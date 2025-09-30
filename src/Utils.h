@@ -9,50 +9,50 @@
 static class Utils
 {
 public:
-	static bool tryParse(std::string& input, int& output, std::string& errMsg);
+	static bool TryParse(std::string& input, int& output, std::string& errMsg);
 
-	static void ChangeConsoleToFullScreen();
+	static void EnableFullscreen();
 
-	static void ChangeConsoleToWindowed();
+	static void EnableWindowedMode();
 
 	static void setForeGroundAndBackGroundColor(int ForeGroundColor, int BackGroundColor);
 
-	static void gotoxy(int x, int y);
+	static void SetCursorPosition(int x, int y);
 
-	static void setcolor(WORD color);
+	static void SetColor(WORD color);
 
-	static void drawpixel(int x, int y, unsigned char Color);
+	static void DrawPixel(int x, int y, unsigned char Color);
 
-	static void drawpixel2(int x, int y, unsigned char Color, char character);
+	static void DrawPixel(int x, int y, unsigned char Color, char character);
 
-	static void drawcircle(int x, int y, int radius, int color);
+	static void DrawCircle(int x, int y, int radius, int color);
 
-	static void drawline(int x0, int y0, int x1, int y1, int color);
+	static void DrawLine(int x0, int y0, int x1, int y1, int color);
 
-	static void drawbigX(int x, int y, int size, int color);
+	static void DrawBigX(int x, int y, int size, int color);
 
-	static void drawframeMiddle(int x, int y, int width, int height, int color);
+	static void DrawFrameCenter(int x, int y, int width, int height, int color);
 
-	static void drawframeTopLeft(int x, int y, int width, int height, int color, char charakter);
+	static void DrawFrameTopLeft(int x, int y, int width, int height, int color, char charakter);
 
-	static void drawframeTopLeftDoubleLined(int x, int y, int width, int height, int color);
+	static void DrawFrameTopLeftDoubleLined(int x, int y, int width, int height, int color);
 
-	static void drawframeTopLeftSingleLined(int x, int y, int width, int height, int color);
+	static void DrawFrameTopLeftSingleLined(int x, int y, int width, int height, int color);
 
-	static void drawcolorpalette();
+	static void DrawColorPalette();
 
-	static void drawcolorpalette(int x, int y);
+	static void DrawColorPalette(int x, int y);
 
-	static void drawcharpalette();
+	static void DrawCharPalette();
 
-	static void drawcharpalette(int x, int y, int Color);
+	static void DrawCharPalette(int x, int y, int Color);
 
-	static void Drawtext(int x, int y, unsigned char color, const std::string text);
+	static void DrawString(int x, int y, unsigned char color, const std::string text);
 
-	static void Drawtext(int x, int y, unsigned char color, const std::vector<std::string> text);
+	static void DrawString(int x, int y, unsigned char color, const std::vector<std::string> text);
 
-	static void DrawWtext(int x, int y, unsigned char color, const std::wstring text);
+	static void DrawWString(int x, int y, unsigned char color, const std::wstring text);
 
-	static void DrawWtext(int x, int y, unsigned char color, const std::vector<std::wstring> text);
+	static void DrawWString(int x, int y, unsigned char color, const std::vector<std::wstring> text);
 };
 
