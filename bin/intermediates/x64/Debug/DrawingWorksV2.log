@@ -1,6 +1,11 @@
-﻿  DrawingWorksV2.cpp
-C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.h(9,14): warning C4091: "static ": Ignoriert auf der linken Seite von "Utils", wenn keine Variable deklariert wurde
-  (Quelldatei „src/DrawingWorksV2.cpp“ wird kompiliert)
+﻿  LoadingScreen.cpp
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.h(10,14): warning C4091: "static ": Ignoriert auf der linken Seite von "Utils", wenn keine Variable deklariert wurde
+  (Quelldatei „src/LoadingScreen.cpp“ wird kompiliert)
   
-C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\DrawingWorksV2.cpp(39,26): warning C4267: "Initialisierung": Konvertierung von "size_t" nach "int", Datenverlust möglich
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\ConsoleArtLibrary.h(5,14): warning C4091: "static ": Ignoriert auf der linken Seite von "ConsoleArtLibrary", wenn keine Variable deklariert wurde
+  (Quelldatei „src/LoadingScreen.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\LoadingScreen.cpp(13,12): warning C4244: "Argument": Konvertierung von "time_t" in "unsigned int", möglicher Datenverlust
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\LoadingScreen.cpp(21,12): warning C4244: "Argument": Konvertierung von "time_t" in "unsigned int", möglicher Datenverlust
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\LoadingScreen.cpp(52,34): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
   DrawingWorksV2.vcxproj -> C:\Users\pfall\Documents\GitHub\DrawingWorksV2\bin\x64\Debug\DrawingWorksV2.exe

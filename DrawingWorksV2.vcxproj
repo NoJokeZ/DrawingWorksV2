@@ -139,6 +139,12 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\ConsoleArtLibrary.cpp" />
+    <ClCompile Include="src\Illustration.cpp" />
+    <ClCompile Include="src\DrawingBoard.cpp" />
+    <ClCompile Include="src\LoadingScreen.cpp" />
+    <ClCompile Include="src\Menu.cpp" />
+    <ClCompile Include="src\IDrawable.cpp" />
     <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\DrawingWorksV2.cpp" />
     <ClCompile Include="src\Event.cpp" />
@@ -146,6 +152,12 @@
     <ClCompile Include="src\Utils.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\Illustration.h" />
+    <ClInclude Include="src\DrawingBoard.h" />
+    <ClInclude Include="src\LoadingScreen.h" />
+    <ClInclude Include="src\Menu.h" />
+    <ClInclude Include="src\ConsoleArtLibrary.h" />
+    <ClInclude Include="src\IDrawable.h" />
     <ClInclude Include="src\Button.h" />
     <ClInclude Include="src\Event.h" />
     <ClInclude Include="src\Input.h" />

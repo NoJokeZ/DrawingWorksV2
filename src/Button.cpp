@@ -11,19 +11,23 @@
 #include <functional>
 
 
-Button::Button(RECT* rect, std::wstring buttonName)
+Button::Button(COORD* position, int width, int height, std::wstring buttonName)
 {
-	m_rect = rect;
+	m_position = *position;
+	m_width = width;
+	m_height = height;
+
 	m_label = buttonName;
 
-	m_labelX = (m_rect->right + m_rect->left) / 2 - (buttonName.length() / 2);
-	m_labelY = (m_rect->bottom + m_rect->top) / 2;
+
+	m_labelPosition.X = (m_position.X + (m_width / 2)) - (buttonName.length() / 2);
+	m_labelPosition.Y = (m_position.Y + (m_height / 2));
 }
 
-void Button::DrawMe()
+void Button::Draw()
 {
-	Utils::DrawFrameTopLeftDoubleLined(m_rect->left, m_rect->top, m_rect->right - m_rect->left, m_rect->bottom - m_rect->top, 15);
-	Utils::DrawWString(m_labelX, m_labelY, 15, m_label);
+	Utils::DrawFrameTopLeftDoubleLined(&m_position, m_width, m_height, 15);
+	Utils::DrawWString(&m_labelPosition, 15, m_label);
 }
 
 void Button::OnClicked()
@@ -40,11 +44,18 @@ void Button::OnHoveredChanged(bool value)
 
 	if (m_isHoveredOver)
 	{
-		Utils::DrawFrameTopLeftSingleLined(m_rect->left, m_rect->top, m_rect->right - m_rect->left, m_rect->bottom - m_rect->top, 9);
-		Utils::DrawWString(m_labelX, m_labelY, 9, m_label);
+		Utils::DrawFrameTopLeftSingleLined(&m_position, m_width, m_height, 9);
+		Utils::DrawWString(&m_labelPosition, 9, m_label);
 	}
 	else
 	{
-		DrawMe();
+		Draw();
 	}
+}
+
+bool Button::PointInButton(COORD* coord)
+{
+	if (coord->X < m_position.X || coord->X >(m_position.X + m_width)) return false;
+	if (coord->Y < m_position.Y || coord->Y >(m_position.Y + m_height)) return false;
+	return true;
 }

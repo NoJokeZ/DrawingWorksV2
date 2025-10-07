@@ -6,29 +6,34 @@
 #include <windows.h>
 #include "Utils.h"
 #include "Event.h"
+#include "IDrawable.h"
 
-class Button
+
+class Button : public IDrawable
 {
 public:
-	Button(RECT* rect, std::wstring buttonName);
+	Button(COORD* position, int width, int height, std::wstring buttonName);
 
-	inline RECT* GetRect() { return m_rect; }
+
+	inline COORD* GetPosition() { return &m_position; }
 	inline Event<>& GetOnButtonClickedEvent() { return m_onButtonClicked; }
 	inline bool GetButtonHoverState() { return m_isHoveredOver; }
 
-	void DrawMe();
+	virtual void Draw();
 
 	void OnClicked();
 
 	void OnHoveredChanged(bool value);
 
-private:
-	int m_labelX { 0 };
-	int m_labelY { 0 };
+	bool PointInButton(COORD* coord);
 
+private:
+	COORD m_labelPosition{};
 	std::wstring m_label {};
 
-	RECT* m_rect { nullptr };
+	COORD m_position{};
+	int m_width{};
+	int m_height{};
 
 	Event<> m_onButtonClicked {};
 
