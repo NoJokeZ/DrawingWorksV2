@@ -1,10 +1,11 @@
 ﻿#include "Menu.h"
 
-Menu _menu{};
 
 int main()
 {
-	_menu.Initialize();
-
+	Menu* _menu = new Menu();
+	_menu->Initialize();
+	delete _menu;
+	_menu = nullptr;
 	return 0;
 }

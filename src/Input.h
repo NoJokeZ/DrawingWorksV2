@@ -8,7 +8,6 @@
 
 class Input
 {
-
 public:
 	enum class MouseInputType
 	{
