@@ -9,24 +9,18 @@
 class Input
 {
 public:
-	enum class MouseInputType
+	enum class MouseInputType : char
 	{
-		NoClick,
-		LeftClick,
-		LeftAltLeftClick,
-		RightAltLeftClick,
-		ShiftLeftClick,
-		LeftCtrlLeftClick,
-		RightCtrlLeftClick,
-		RightClick,
-		LeftAltRightClick,
-		RightAltRightClick,
-		ShiftRightClick,
-		LeftCtrlRightClick,
-		RightCtrlRightClick,
-		MiddleClick
+		NoClick		= 0,
+		LeftClick	= 1,
+		RightClick	= 2,
+		MiddleClick = 4,
+		LeftAlt		= 8,
+		RightAlt	= 16,
+		Shift		= 32,
+		LeftCtrl	= 64,
+		RightCtrl	= 128
 	};
-
 
 	Input();
 	Input(std::vector<Button*> buttons);
@@ -40,9 +34,6 @@ public:
 	void HandleInput();
 
 	inline std::vector<IDrawable*> GetDrawables() { return m_drawables; };
-
-	void logxy(COORD coord);
-	void logRect(RECT rect);
 
 private:
 	void Initialize();
@@ -68,3 +59,22 @@ private:
 
 
 };
+
+//Globale Operatorfunktionen auﬂerhalb der Klasse definieren
+inline Input::MouseInputType operator|(Input::MouseInputType leftVal, Input::MouseInputType rightVal)
+{
+    using T = std::underlying_type<Input::MouseInputType>::type;
+    return static_cast<Input::MouseInputType>(static_cast<T>(leftVal) | static_cast<T>(rightVal));
+}
+
+inline Input::MouseInputType operator&(Input::MouseInputType leftVal, Input::MouseInputType rightVal)
+{
+    using T = std::underlying_type<Input::MouseInputType>::type;
+    return static_cast<Input::MouseInputType>(static_cast<T>(leftVal) & static_cast<T>(rightVal));
+}
+
+inline Input::MouseInputType operator~(Input::MouseInputType val)
+{
+	using T = std::underlying_type<Input::MouseInputType>::type;
+	return static_cast<Input::MouseInputType>(~(static_cast<T>(val)));
+}

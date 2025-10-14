@@ -16,7 +16,7 @@ private:
 
 	void AddFill(int value);
 
-	int m_maxFillAmount{ 100 };
+	const int m_maxFillAmount{ 100 };
 	int m_currentFillAmount{ 0 };
 
 	const COORD m_loadingBarStart{2,1};

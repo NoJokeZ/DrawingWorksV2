@@ -144,10 +144,8 @@
     <ClCompile Include="src\DrawingBoard.cpp" />
     <ClCompile Include="src\LoadingScreen.cpp" />
     <ClCompile Include="src\Menu.cpp" />
-    <ClCompile Include="src\IDrawable.cpp" />
     <ClCompile Include="src\Button.cpp" />
     <ClCompile Include="src\DrawingWorksV2.cpp" />
-    <ClCompile Include="src\Event.cpp" />
     <ClCompile Include="src\Input.cpp" />
     <ClCompile Include="src\Utils.cpp" />
   </ItemGroup>

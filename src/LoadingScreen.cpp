@@ -4,7 +4,6 @@
 #include "Utils.h"
 #include "ConsoleArtLibrary.h"
 
-
 void LoadingScreen::StartLoading()
 {
 	Utils::ClearScreen();
@@ -25,7 +24,8 @@ void LoadingScreen::StartLoading()
 		int fillAmount = rand() % 4 + 1;
 		AddFill(fillAmount);
 
-		int sleepAmount = rand() % 400 + 100;
+		int sleepAmount = rand() % 10;
+		//int sleepAmount = rand() % 400 + 100;
 		std::this_thread::sleep_for(std::chrono::milliseconds(sleepAmount));
 
 		if (m_currentFillAmount >= m_maxFillAmount) isLoadingFinished = true;

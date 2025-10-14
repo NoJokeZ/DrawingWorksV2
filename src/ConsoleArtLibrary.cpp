@@ -1,9 +1,9 @@
 ﻿#include "ConsoleArtLibrary.h"
 
 
-const std::vector<std::wstring>& ConsoleArtLibrary::MenuHeader()
+std::vector<std::wstring>* ConsoleArtLibrary::MenuHeader()
 {
-	static const std::vector<std::wstring> controls{
+	static std::vector<std::wstring> controls{
 			LR"(╔════════════════════════════════════════════════════════════════════════════════════════════╗)",
 			LR"(║  ________                      .__                  __      __             __              ║)",
 			LR"(║  \______ \____________ __  _  _|__| ____    ____   /  \    /  \___________|  | __  ______  ║)",
@@ -13,35 +13,35 @@ const std::vector<std::wstring>& ConsoleArtLibrary::MenuHeader()
 			LR"(║          \/           \/               \//_____/          \/                   \/     \/   ║)",
 			LR"(╚════════════════════════════════════════════════════════════════════════════════════════════╝)"
 	};
-	return controls;
+	return &controls;
 }
 
-const std::vector<std::wstring>& ConsoleArtLibrary::LoadingBarEmpty()
+std::vector<std::wstring>* ConsoleArtLibrary::LoadingBarEmpty()
 {
-	static const std::vector<std::wstring> controls{
+	static std::vector<std::wstring> controls{
 			LR"(╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗)",
 			LR"(║                                                                                                      ║)",
 			LR"(║                                                                                                      ║)",
 			LR"(║                                                                                                      ║)",
 			LR"(╚══════════════════════════════════════════════════════════════════════════════════════════════════════╝)"
 	};
-	return controls;
+	return &controls;
 }
 
-const std::vector<std::wstring>& ConsoleArtLibrary::LoadingBarFillElement()
+ std::vector<std::wstring>* ConsoleArtLibrary::LoadingBarFillElement()
 {
-	static const std::vector<std::wstring> controls{
+	static std::vector<std::wstring> controls{
 			LR"(░)",
 			LR"(░)",
 			LR"(░)",
 	};
-	return controls;
+	return &controls;
 }
 
 
-const std::vector<std::wstring>& ConsoleArtLibrary::DrawingControls()
+std::vector<std::wstring>* ConsoleArtLibrary::DrawingControls()
 {
-	static const std::vector<std::wstring> controls{
+	static std::vector<std::wstring> controls{
 			LR"(╔══════════════════════════════════════════════════════════════════════════════╗)",
 			LR"(║                                                                              ║)",
 			LR"(║                              Drawing Controls                                ║)",
@@ -62,5 +62,5 @@ const std::vector<std::wstring>& ConsoleArtLibrary::DrawingControls()
 			LR"(║ F4                      ->     Windowed                                      ║)",
 			LR"(╚══════════════════════════════════════════════════════════════════════════════╝)"
 	};
-	return controls;
+	return &controls;
 }

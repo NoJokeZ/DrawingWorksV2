@@ -12,8 +12,7 @@
 class Button : public IDrawable
 {
 public:
-	Button(COORD* position, int width, int height, std::wstring buttonName);
-
+	Button(COORD position, int width, int height, unsigned char buttonColor, unsigned char hoverColor, std::wstring buttonName);
 
 	inline COORD* GetPosition() { return &m_position; }
 	inline Event<>& GetOnButtonClickedEvent() { return m_onButtonClicked; }
@@ -28,14 +27,18 @@ public:
 	bool PointInButton(COORD* coord);
 
 private:
-	COORD m_labelPosition{};
-	std::wstring m_label {};
+	void ActualDraw(unsigned char color);
 
 	COORD m_position{};
-	int m_width{};
-	int m_height{};
+	int m_width{ 0 };
+	int m_height{ 0 };
+	unsigned char m_buttonColor{ 0 };
+	unsigned char m_hoverColor{ 0 };
 
-	Event<> m_onButtonClicked {};
+	COORD m_labelPosition{};
+	std::wstring m_label{};
+
+	Event<> m_onButtonClicked{};
 
 	bool m_isHoveredOver { false };
 };

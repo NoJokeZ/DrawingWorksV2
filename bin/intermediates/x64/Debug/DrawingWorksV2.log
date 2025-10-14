@@ -2,6 +2,9 @@
 C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.h(10,14): warning C4091: "static ": Ignoriert auf der linken Seite von "Utils", wenn keine Variable deklariert wurde
   (Quelldatei „src/Input.cpp“ wird kompiliert)
   
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Input.h(22,3): warning C4369: "Input::MouseInputType": Der Enumeratorwert "128" kann nicht als "char" dargestellt werden, der Wert ist "128".
+  (Quelldatei „src/Input.cpp“ wird kompiliert)
+  
 C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Input.cpp(32,12): warning C4244: "Argument": Konvertierung von "time_t" in "unsigned int", möglicher Datenverlust
 C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Input.cpp(72,8): warning C4101: "point": Unreferenzierte lokale Variable
   DrawingWorksV2.vcxproj -> C:\Users\pfall\Documents\GitHub\DrawingWorksV2\bin\x64\Debug\DrawingWorksV2.exe

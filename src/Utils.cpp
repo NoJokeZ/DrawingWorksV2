@@ -23,13 +23,13 @@ void Utils::ChangeWindowSize(int width, int height)
 	MoveWindow(console, r.left, r.top, width, height, TRUE);
 }
 
-void Utils::ResetScreen(std::vector<IDrawable*> drawables)
+void Utils::ResetScreen(std::vector<IDrawable*>* drawables)
 {
 	ClearScreen();
 
-	for (size_t i = 0; i < drawables.size(); i++)
+	for (size_t i = 0; i < drawables->size(); i++)
 	{
-		drawables[i]->Draw();
+		(*drawables)[i]->Draw();
 	}
 
 	return;
@@ -452,12 +452,12 @@ void Utils::DrawString(COORD* position, unsigned char color, const std::string t
 	std::cout << text;
 }
 
-void Utils::DrawString(COORD* position, unsigned char color, const std::vector<std::string> text)
+void Utils::DrawString(COORD* position, unsigned char color, const std::vector<std::string>* text)
 {
-	for (int i = 0; i < text.size(); i++)
+	for (int i = 0; i < text->size(); i++)
 	{
 		COORD newPos{ position->X, position->Y + i };
-		DrawString(&newPos, color, text[i]);
+		DrawString(&newPos, color, (*text)[i]);
 	}
 }
 
@@ -472,12 +472,12 @@ void Utils::DrawWString(COORD* position, unsigned char color, const std::wstring
 	i = _setmode(_fileno(stdout), _O_TEXT);
 }
 
-void Utils::DrawWString(COORD* position, unsigned char color, const std::vector<std::wstring> text)
+void Utils::DrawWString(COORD* position, unsigned char color, const std::vector<std::wstring>* text)
 {
-	for (int i = 0; i < text.size(); i++)
+	for (int i = 0; i < text->size(); i++)
 	{
 		COORD newPosition = *position;
 		newPosition.Y += i;
-		DrawWString(&newPosition, color, text[i]);
+		DrawWString(&newPosition, color, (*text)[i]);
 	}
 }

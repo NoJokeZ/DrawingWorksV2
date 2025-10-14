@@ -16,7 +16,7 @@ public:
 
 	static void ClearScreen();
 
-	static void ResetScreen(std::vector<IDrawable*> drawables);
+	static void ResetScreen(std::vector<IDrawable*>* drawables);
 
 	static void EnableFullscreen();
 
@@ -62,14 +62,13 @@ public:
 
 	static void DrawString(COORD* position, unsigned char color, const std::string text);
 
-	static void DrawString(COORD* position, unsigned char color, const std::vector<std::string> text);
+	static void DrawString(COORD* position, unsigned char color, const std::vector<std::string>* text);
 
 	static void DrawWString(COORD* position, unsigned char color, const std::wstring text);
 
-	static void DrawWString(COORD* position, unsigned char color, const std::vector<std::wstring> text);
+	static void DrawWString(COORD* position, unsigned char color, const std::vector<std::wstring>* text);
 private:
 	static const unsigned char m_Square = (unsigned char)219;
-
 	static const unsigned char m_SquareLight = (unsigned char)176;
 
 	static const unsigned char m_DoubleLineCornerTopLeft = (unsigned char)201;

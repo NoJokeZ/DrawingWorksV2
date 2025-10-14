@@ -98,7 +98,7 @@ void Input::HandleInput()
 			{
 				m_buttons[i]->OnHoveredChanged(true);
 			}
-			else if (!(m_buttons[i]->PointInButton(&coord)) && m_buttons[i]-> GetButtonHoverState())
+			else if (!(m_buttons[i]->PointInButton(&coord)) && m_buttons[i]->GetButtonHoverState())
 			{
 				m_buttons[i]->OnHoveredChanged(false);
 			}
@@ -125,27 +125,66 @@ void Input::HandleInput()
 
 		inputType = InterpretMouseInput(inputRecord);
 
-		switch (inputType)
+		if (static_cast<bool>(inputType & MouseInputType::LeftClick))
 		{
-		case MouseInputType::LeftAltLeftClick:
-			Utils::DrawCircle(&coord, 4, rand() % 13 + 1);
-			break;
-		case MouseInputType::ShiftLeftClick:
-			Utils::DrawFrameCenter(&coord, 9, 5, rand() % 13 + 1);
-			break;
-		case MouseInputType::LeftCtrlLeftClick:
-			Utils::DrawBigX(&coord, 3, rand() % 13 + 1);
-			break;
-		case MouseInputType::LeftClick:
-			Utils::DrawPixel(&coord, 15);
-			break;
-		case MouseInputType::RightClick:
-			Utils::DrawPixel(&coord, rand() % 13 + 1);
-			break;
-		default:
-			break;
-		}
+			inputType = inputType & ~MouseInputType::LeftClick;
 
+			switch (inputType)
+			{
+			case MouseInputType::LeftAlt:
+				Utils::DrawCircle(&coord, 4, rand() % 13 + 1);
+				break;
+			case MouseInputType::Shift:
+				Utils::DrawFrameCenter(&coord, 9, 5, rand() % 13 + 1);
+				break;
+			case MouseInputType::LeftCtrl:
+				Utils::DrawBigX(&coord, 3, rand() % 13 + 1);
+				break;
+			default:
+				Utils::DrawPixel(&coord, 15);
+				break;
+			}
+		}
+		else if (static_cast<bool>(inputType & MouseInputType::RightClick))
+		{
+			inputType = inputType & ~MouseInputType::RightClick;
+
+			switch (inputType)
+			{
+			case MouseInputType::LeftAlt:
+				//Not used yet
+				break;
+			case MouseInputType::Shift:
+				//Not used yet
+				break;
+			case MouseInputType::LeftCtrl:
+				//Not used yet
+				break;
+			default:
+				Utils::DrawPixel(&coord, rand() % 13 + 1);
+				break;
+			}
+		}
+		else if (static_cast<bool>(inputType & MouseInputType::MiddleClick))
+		{
+			inputType = inputType & ~MouseInputType::MiddleClick;
+
+			switch (inputType)
+			{
+			case MouseInputType::LeftAlt:
+				//Not used yet
+				break;
+			case MouseInputType::Shift:
+				//Not used yet
+				break;
+			case MouseInputType::LeftCtrl:
+				//Not used yet
+				break;
+			default:
+				//Not used yet
+				break;
+			}
+		}
 		//Screen resize event
 	case WINDOW_BUFFER_SIZE_EVENT:
 		m_wasWindowResized = true;
@@ -171,54 +210,45 @@ void Input::HandleInput()
 
 Input::MouseInputType Input::InterpretMouseInput(INPUT_RECORD inputRecord)
 {
-	DWORD pressedControlButtonState = inputRecord.Event.MouseEvent.dwControlKeyState;
+	MouseInputType inputType;
 
 	switch (inputRecord.Event.MouseEvent.dwButtonState)
 	{
 	case FROM_LEFT_1ST_BUTTON_PRESSED:
-		if (inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_ALT_PRESSED) return MouseInputType::LeftAltLeftClick;
-		if (inputRecord.Event.MouseEvent.dwControlKeyState & RIGHT_ALT_PRESSED) return MouseInputType::RightAltLeftClick;
-		if (inputRecord.Event.MouseEvent.dwControlKeyState & SHIFT_PRESSED) return MouseInputType::ShiftLeftClick;
-		if (inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_CTRL_PRESSED) return MouseInputType::RightCtrlLeftClick;
-		if (inputRecord.Event.MouseEvent.dwControlKeyState & RIGHT_CTRL_PRESSED) return MouseInputType::RightCtrlLeftClick;
-		return MouseInputType::LeftClick;
+		inputType = MouseInputType::LeftClick;
 		break;
 	case RIGHTMOST_BUTTON_PRESSED:
-		if (inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_ALT_PRESSED) return MouseInputType::LeftAltRightClick;
-		if (inputRecord.Event.MouseEvent.dwControlKeyState & RIGHT_ALT_PRESSED) return MouseInputType::RightAltRightClick;
-		if (inputRecord.Event.MouseEvent.dwControlKeyState & SHIFT_PRESSED) return MouseInputType::ShiftRightClick;
-		if (inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_CTRL_PRESSED) return MouseInputType::RightCtrlRightClick;
-		if (inputRecord.Event.MouseEvent.dwControlKeyState & RIGHT_CTRL_PRESSED) return MouseInputType::RightCtrlRightClick;
-		return MouseInputType::RightClick;
+		inputType = MouseInputType::RightClick;
+		break;
 	case FROM_LEFT_2ND_BUTTON_PRESSED:
-		return MouseInputType::MiddleClick;
+		inputType = MouseInputType::MiddleClick;
 	default:
-		return MouseInputType::NoClick;
+		inputType = MouseInputType::NoClick;
+		//If no mouse button was clicked we return directly with only NoClick;
+		return inputType;
 		break;
 	}
-}
 
-void Input::logxy(COORD coord)
-{
-	Utils::SetCursorPosition();
-	std::cout << "X:" << coord.X << "  ";
-	COORD newPos{ 7,0 };
-	Utils::SetCursorPosition(&newPos);
-	std::cout << "Y:" << coord.Y << "  ";
-}
+	if (inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_ALT_PRESSED)
+	{
+		inputType = inputType | MouseInputType::LeftAlt;
+	}
+	else if (inputRecord.Event.MouseEvent.dwControlKeyState & RIGHT_ALT_PRESSED)
+	{
+		inputType = inputType | MouseInputType::RightAlt;
+	}
+	else if (inputRecord.Event.MouseEvent.dwControlKeyState & SHIFT_PRESSED)
+	{
+		inputType = inputType | MouseInputType::Shift;
+	}
+	else if (inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_CTRL_PRESSED)
+	{
+		inputType = inputType | MouseInputType::LeftCtrl;
+	}
+	else if (inputRecord.Event.MouseEvent.dwControlKeyState & RIGHT_CTRL_PRESSED)
+	{
+		inputType = inputType | MouseInputType::RightCtrl;
+	}
 
-void Input::logRect(RECT rect)
-{
-	COORD newPos{ 20,0 };
-	Utils::SetCursorPosition(&newPos);
-	std::cout << "L:" << rect.left << "  ";
-	newPos.X += 7;
-	Utils::SetCursorPosition(&newPos);
-	std::cout << "T:" << rect.top << "  ";
-	newPos.X += 7;
-	Utils::SetCursorPosition(&newPos);
-	std::cout << "R:" << rect.right << "  ";
-	newPos.X += 7;
-	Utils::SetCursorPosition(&newPos);
-	std::cout << "B:" << rect.bottom << "  ";
+	return inputType;
 }

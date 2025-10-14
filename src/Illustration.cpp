@@ -1,8 +1,8 @@
 #include "Illustration.h"
 
-Illustration::Illustration(COORD* position, unsigned char color, const std::vector<std::wstring> illustration)
+Illustration::Illustration(COORD position, unsigned char color, std::vector<std::wstring>* illustration)
 {
-	m_position = *position;
+	m_position = position;
 	m_color = color;
 	m_illustration = illustration;
 }

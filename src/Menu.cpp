@@ -1,6 +1,12 @@
 #include "Menu.h"
 #include "LoadingScreen.h"
 
+Menu::~Menu()
+{
+	delete m_drawingBoard;
+	m_drawingBoard = nullptr;
+}
+
 void Menu::Initialize()
 {
 	//Input
@@ -50,7 +56,7 @@ void Menu::LoadDrawingBoard()
 	m_hasUserSelected = true;
 
 	LoadingScreen loadingScreen{};
-	loadingScreen.GetOnLoadingFinishedEvent() += [this]() { m_drawingBoard.Load(); };
+	loadingScreen.GetOnLoadingFinishedEvent() += [this]() { m_drawingBoard->Load(); };
 
 	loadingScreen.StartLoading();
 }
@@ -83,8 +89,8 @@ void Menu::DrawMenu()
 
 	for (size_t i = 0; i < m_buttons.size(); i++)
 	{
-		drawables.push_back(m_buttons[i]);
+		drawables.push_back((m_buttons)[i]);
 	}
 
-	Utils::ResetScreen(drawables);
+	Utils::ResetScreen(&drawables);
 }
