@@ -17,8 +17,6 @@ void LoadingScreen::StartLoading()
 
 	bool isLoadingFinished{ false };
 
-	srand(time(0));
-
 	while (!isLoadingFinished)
 	{
 		int fillAmount = rand() % 4 + 1;
