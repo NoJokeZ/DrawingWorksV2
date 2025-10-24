@@ -7,23 +7,23 @@ template<typename ...Args>
 class Event
 {
 public:
-	void Subscribe(std::function<void(Args...)> callback)
+	void Subscribe(std::function<void(Args...)> a_callback)
 	{
-		m_subscribers.push_back(callback);
+		m_subscribers.push_back(a_callback);
 	}
 
-	void Invoke(Args... invokeValue)
+	void Invoke(Args... a_invokeValue)
 	{
 		for (auto& func : m_subscribers)
 		{
 			if (func) //If not empty
-				func(invokeValue...);
+				func(a_invokeValue...);
 		}
 	}
 
-	void operator +=(std::function<void(Args...)> callback)
+	void operator +=(std::function<void(Args...)> a_callback)
 	{
-		this->Subscribe(callback);
+		this->Subscribe(a_callback);
 	}
 
 

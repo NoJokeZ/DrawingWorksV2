@@ -1,10 +1,10 @@
 #pragma once
 #include "Utils.h"
 
-void Utils::ChangeManualWindowResizing(bool value)
+void Utils::ChangeManualWindowResizing(bool a_value)
 {
 	HWND consoleWindow = GetConsoleWindow();
-	if (value)
+	if (a_value)
 	{
 		SetWindowLong(consoleWindow, GWL_STYLE, GetWindowLong(consoleWindow, GWL_STYLE) | WS_MAXIMIZEBOX | WS_SIZEBOX);
 	}
@@ -14,22 +14,22 @@ void Utils::ChangeManualWindowResizing(bool value)
 	}
 }
 
-void Utils::ChangeWindowSize(int width, int height) 
+void Utils::ChangeWindowSize(int a_width, int a_height)
 {
 	HWND console = GetConsoleWindow();
 	RECT r;
 	GetWindowRect(console, &r); //stores the console's current dimensions
 
-	MoveWindow(console, r.left, r.top, width, height, TRUE);
+	MoveWindow(console, r.left, r.top, a_width, a_height, TRUE);
 }
 
-void Utils::ResetScreen(std::vector<IDrawable*>* drawables)
+void Utils::ResetScreen(std::vector<IDrawable*>* a_drawables)
 {
 	ClearScreen();
 
-	for (size_t i = 0; i < drawables->size(); i++)
+	for (size_t i = 0; i < a_drawables->size(); i++)
 	{
-		(*drawables)[i]->Draw();
+		(*a_drawables)[i]->Draw();
 	}
 
 	return;
@@ -65,9 +65,9 @@ void Utils::EnableWindowedMode()
 	SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_WINDOWED_MODE, 0);
 }
 
-void Utils::setForeGroundAndBackGroundColor(int foreGroundColor, int backGroundColor)
+void Utils::setForeGroundAndBackGroundColor(int a_foreGroundColor, int a_backGroundColor)
 {
-	int color = 16 * backGroundColor + foreGroundColor;
+	int color = 16 * a_backGroundColor + a_foreGroundColor;
 	SetColor(color);
 }
 
@@ -77,9 +77,9 @@ void Utils::SetCursorPosition()
 	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), position);
 }
 
-void Utils::SetCursorPosition(COORD* position)
+void Utils::SetCursorPosition(COORD* a_position)
 {
-	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), *position);
+	SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE), *a_position);
 }
 
 #pragma region Colors
@@ -101,62 +101,62 @@ void Utils::SetCursorPosition(COORD* position)
 //     15 = White
 #pragma endregion
 
-void Utils::SetColor(WORD color)
+void Utils::SetColor(WORD a_color)
 {
-	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), color);
+	SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), a_color);
 }
 
-void Utils::DrawPixel(COORD* position, unsigned char Color)
+void Utils::DrawPixel(COORD* a_position, unsigned char a_color)
 {
-	SetColor(Color);
-	SetCursorPosition(position);
+	SetColor(a_color);
+	SetCursorPosition(a_position);
 	std::cout << m_Square;
 }
 
-void Utils::DrawPixel(int x, int y, unsigned char Color)
+void Utils::DrawPixel(int a_x, int a_y, unsigned char a_color)
 {
-	SetColor(Color);
-	COORD position{ x, y };
+	SetColor(a_color);
+	COORD position{ a_x, a_y };
 	SetCursorPosition(&position);
 	std::cout << m_Square;
 }
 
-void Utils::DrawPixel(COORD* position, unsigned char Color, char character)
+void Utils::DrawPixel(COORD* a_position, unsigned char a_color, char a_character)
 {
-	SetColor(Color);
-	SetCursorPosition(position);
-	std::cout << character;
+	SetColor(a_color);
+	SetCursorPosition(a_position);
+	std::cout << a_character;
 }
 
-void Utils::DrawPixel(int x, int y, unsigned char Color, char character)
+void Utils::DrawPixel(int a_x, int a_y, unsigned char a_color, char a_character)
 {
-	SetColor(Color);
-	COORD position{ x, y };
+	SetColor(a_color);
+	COORD position{ a_x, a_y };
 	SetCursorPosition(&position);
-	std::cout << character;
+	std::cout << a_character;
 }
 
-void Utils::DrawCircle(COORD* position, int radius, int color)
+void Utils::DrawCircle(COORD* a_position, int a_radius, int a_color)
 {
-	int x = position->X;
-	int y = position->Y;
+	int x = a_position->X;
+	int y = a_position->Y;
 
-	int actualWitdthRadius = radius * 2 - 1;
+	int actualWitdthRadius = a_radius * 2 - 1;
 
 	int wx, wy;
 	int thresh;
 	int actualWitdthRadiusSqrd = actualWitdthRadius * actualWitdthRadius;
-	int radiusSqrd = radius * radius;
+	int radiusSqrd = a_radius * a_radius;
 	int xa, ya;
 
-	DrawPixel(x, y + radius, color);
-	DrawPixel(x, y - radius, color);
+	DrawPixel(x, y + a_radius, a_color);
+	DrawPixel(x, y - a_radius, a_color);
 
 	wx = 0;
-	wy = radius;
+	wy = a_radius;
 	xa = 0;
-	ya = actualWitdthRadiusSqrd * 2 * radius;
-	thresh = actualWitdthRadiusSqrd / 4 - actualWitdthRadiusSqrd * radius;
+	ya = actualWitdthRadiusSqrd * 2 * a_radius;
+	thresh = actualWitdthRadiusSqrd / 4 - actualWitdthRadiusSqrd * a_radius;
 
 	for (;;) {
 		thresh += xa + radiusSqrd;
@@ -174,14 +174,14 @@ void Utils::DrawCircle(COORD* position, int radius, int color)
 			break;
 
 
-		DrawPixel(x + wx, y - wy, color);
-		DrawPixel(x - wx, y - wy, color);
-		DrawPixel(x + wx, y + wy, color);
-		DrawPixel(x - wx, y + wy, color);
+		DrawPixel(x + wx, y - wy, a_color);
+		DrawPixel(x - wx, y - wy, a_color);
+		DrawPixel(x + wx, y + wy, a_color);
+		DrawPixel(x - wx, y + wy, a_color);
 	}
 
-	DrawPixel(x + actualWitdthRadius, y, color);
-	DrawPixel(x - actualWitdthRadius, y, color);
+	DrawPixel(x + actualWitdthRadius, y, a_color);
+	DrawPixel(x - actualWitdthRadius, y, a_color);
 
 	wx = actualWitdthRadius;
 	wy = 0;
@@ -205,19 +205,19 @@ void Utils::DrawCircle(COORD* position, int radius, int color)
 		if (ya > xa)
 			break;
 
-		DrawPixel(x + wx, y - wy, color);
-		DrawPixel(x - wx, y - wy, color);
-		DrawPixel(x + wx, y + wy, color);
-		DrawPixel(x - wx, y + wy, color);
+		DrawPixel(x + wx, y - wy, a_color);
+		DrawPixel(x - wx, y - wy, a_color);
+		DrawPixel(x + wx, y + wy, a_color);
+		DrawPixel(x - wx, y + wy, a_color);
 	}
 }
 
-void Utils::DrawLine(COORD* position0, COORD* position1, int color)
+void Utils::DrawLine(COORD* a_position0, COORD* a_position1, int a_color)
 {
-	int x0 = position0->X;
-	int y0 = position0->Y;
-	int x1 = position1->X;
-	int y1 = position1->Y;
+	int x0 = a_position0->X;
+	int y0 = a_position0->Y;
+	int x1 = a_position1->X;
+	int y1 = a_position1->Y;
 
 	int dy = y1 - y0;
 	int dx = x1 - x0;
@@ -230,7 +230,7 @@ void Utils::DrawLine(COORD* position0, COORD* position1, int color)
 	dy <<= 1;                                                  // dy is now 2*dy
 	dx <<= 1;                                                  // dx is now 2*dx
 
-	DrawPixel(x0, y0, color);
+	DrawPixel(x0, y0, a_color);
 	if (dx > dy) {
 		int fraction = dy - (dx >> 1);                         // same as 2*dy - dx
 		while (x0 != x1) {
@@ -240,7 +240,7 @@ void Utils::DrawLine(COORD* position0, COORD* position1, int color)
 			}
 			x0 += stepx;
 			fraction += dy;                                    // same as fraction -= 2*dy
-			DrawPixel(x0, y0, color);
+			DrawPixel(x0, y0, a_color);
 		}
 	}
 	else {
@@ -252,136 +252,136 @@ void Utils::DrawLine(COORD* position0, COORD* position1, int color)
 			}
 			y0 += stepy;
 			fraction += dx;
-			DrawPixel(x0, y0, color);
+			DrawPixel(x0, y0, a_color);
 		}
 	}
 }
 
-void Utils::DrawBigX(COORD* position, int size, int color)
+void Utils::DrawBigX(COORD* a_position, int a_size, int a_color)
 {
-	if (!(size % 2)) size++; //Make sure size is uneven
+	if (!(a_size % 2)) a_size++; //Make sure size is uneven
 
-	int leftX = position->X - size * 2 - 1;
-	int rightX = position->X + size * 2;
-	int topY = position->Y - size;
-	int bottomY = position->Y + size;
+	int leftX = a_position->X - a_size * 2 - 1;
+	int rightX = a_position->X + a_size * 2;
+	int topY = a_position->Y - a_size;
+	int bottomY = a_position->Y + a_size;
 
 	COORD leftTop{ leftX, topY };
 	COORD leftBottom{ leftX, bottomY };
 	COORD rightTop{ rightX, topY };
 	COORD rightBottom{ rightX, bottomY };
 
-	DrawLine(&leftTop, &rightBottom, color);
-	DrawLine(&leftBottom, &rightTop, color);
+	DrawLine(&leftTop, &rightBottom, a_color);
+	DrawLine(&leftBottom, &rightTop, a_color);
 }
 
-void Utils::DrawFrameCenter(COORD* position, int width, int height, int color)
+void Utils::DrawFrameCenter(COORD* a_position, int a_width, int a_height, int a_color)
 {
-	if (!(width % 2)) width++; //Make sure width is uneven
-	if (!(height % 2)) height++; //Make sure height is uneven
+	if (!(a_width % 2)) a_width++; //Make sure width is uneven
+	if (!(a_height % 2)) a_height++; //Make sure height is uneven
 
-	int leftX = position->X - ((width - 1) / 2);
-	int topY = position->Y - ((height - 1) / 2);
-	int rightX = leftX + width;
-	int bottomY = topY + height;
+	int leftX = a_position->X - ((a_width - 1) / 2);
+	int topY = a_position->Y - ((a_height - 1) / 2);
+	int rightX = leftX + a_width;
+	int bottomY = topY + a_height;
 
 	{
-		DrawPixel(leftX, topY, color); //Top left corner of drawframe
-		DrawPixel(rightX, topY, color); //Top right corner of drawframe
-		DrawPixel(leftX, bottomY, color); //Bottom left corner of drawframe
-		DrawPixel(rightX, bottomY, color); //Bottom right corner of drawframe
+		DrawPixel(leftX, topY, a_color); //Top left corner of drawframe
+		DrawPixel(rightX, topY, a_color); //Top right corner of drawframe
+		DrawPixel(leftX, bottomY, a_color); //Bottom left corner of drawframe
+		DrawPixel(rightX, bottomY, a_color); //Bottom right corner of drawframe
 
 		for (int i = leftX + 1; i < rightX; i++)
 		{
-			DrawPixel(i, topY, color); // Top horizontol line
-			DrawPixel(i, bottomY, color); // Bottom Horizontal line
+			DrawPixel(i, topY, a_color); // Top horizontol line
+			DrawPixel(i, bottomY, a_color); // Bottom Horizontal line
 		}
 
 		for (int i = topY + 1; i < bottomY; i++)
 		{
-			DrawPixel(leftX, i, color); //Left Vertical line
-			DrawPixel(rightX, i, color); //Right Vertical Line
+			DrawPixel(leftX, i, a_color); //Left Vertical line
+			DrawPixel(rightX, i, a_color); //Right Vertical Line
 		}
 	}
 }
 
-void Utils::DrawFrameTopLeft(COORD* position, int width, int height, int color, char character)
+void Utils::DrawFrameTopLeft(COORD* a_position, int a_width, int a_height, int a_color, char a_character)
 {
-	int leftX = position->X;
-	int topY = position->Y;
-	int rightX = leftX + width;
-	int bottomY = topY + height;
+	int leftX = a_position->X;
+	int topY = a_position->Y;
+	int rightX = leftX + a_width;
+	int bottomY = topY + a_height;
 
 	{
-		DrawPixel(leftX, topY, color, character); //Top left corner of drawframe
-		DrawPixel(rightX, topY, color, character); //Top right corner of drawframe
-		DrawPixel(leftX, bottomY, color, character); //Bottom left corner of drawframe
-		DrawPixel(rightX, bottomY, color, character); //Bottom right corner of drawframe
+		DrawPixel(leftX, topY, a_color, a_character); //Top left corner of drawframe
+		DrawPixel(rightX, topY, a_color, a_character); //Top right corner of drawframe
+		DrawPixel(leftX, bottomY, a_color, a_character); //Bottom left corner of drawframe
+		DrawPixel(rightX, bottomY, a_color, a_character); //Bottom right corner of drawframe
 
 		for (int i = leftX + 1; i < rightX; i++)
 		{
-			DrawPixel(i, topY, color, character); // Top horizontol line
-			DrawPixel(i, bottomY, color, character); // Bottom Horizontal line
+			DrawPixel(i, topY, a_color, a_character); // Top horizontol line
+			DrawPixel(i, bottomY, a_color, a_character); // Bottom Horizontal line
 		}
 
 		for (int i = topY + 1; i < bottomY; i++)
 		{
-			DrawPixel(leftX, i, color, character); //Left Vertical line
-			DrawPixel(rightX, i, color, character); //Right Vertical Line
+			DrawPixel(leftX, i, a_color, a_character); //Left Vertical line
+			DrawPixel(rightX, i, a_color, a_character); //Right Vertical Line
 		}
 	}
 }
 
-void Utils::DrawFrameTopLeftDoubleLined(COORD* position, int width, int height, int color)
+void Utils::DrawFrameTopLeftDoubleLined(COORD* a_position, int a_width, int a_height, int a_color)
 {
-	int leftX = position->X;
-	int topY = position->Y;
-	int rightX = leftX + width;
-	int bottomY = topY + height;
+	int leftX = a_position->X;
+	int topY = a_position->Y;
+	int rightX = leftX + a_width;
+	int bottomY = topY + a_height;
 
 	{
-		DrawPixel(leftX, topY, color, m_DoubleLineCornerTopLeft); //Top left corner of drawframe
-		DrawPixel(rightX, topY, color, m_DoubleLineCornerTopRight); //Top right corner of drawframe
-		DrawPixel(leftX, bottomY, color, m_DoubleLineCornerBottomLeft); //Bottom left corner of drawframe
-		DrawPixel(rightX, bottomY, color, m_DoubleLineCornerBottomRight); //Bottom right corner of drawframe
+		DrawPixel(leftX, topY, a_color, m_DoubleLineCornerTopLeft); //Top left corner of drawframe
+		DrawPixel(rightX, topY, a_color, m_DoubleLineCornerTopRight); //Top right corner of drawframe
+		DrawPixel(leftX, bottomY, a_color, m_DoubleLineCornerBottomLeft); //Bottom left corner of drawframe
+		DrawPixel(rightX, bottomY, a_color, m_DoubleLineCornerBottomRight); //Bottom right corner of drawframe
 
 		for (int i = leftX + 1; i < rightX; i++)
 		{
-			DrawPixel(i, topY, color, m_DoubleLineHorizontal); // Top horizontol line
-			DrawPixel(i, bottomY, color, m_DoubleLineHorizontal); // Bottom Horizontal line
+			DrawPixel(i, topY, a_color, m_DoubleLineHorizontal); // Top horizontol line
+			DrawPixel(i, bottomY, a_color, m_DoubleLineHorizontal); // Bottom Horizontal line
 		}
 
 		for (int i = topY + 1; i < bottomY; i++)
 		{
-			DrawPixel(leftX, i, color, m_DoubleLineVertical); //Left Vertical line
-			DrawPixel(rightX, i, color, m_DoubleLineVertical); //Right Vertical Line
+			DrawPixel(leftX, i, a_color, m_DoubleLineVertical); //Left Vertical line
+			DrawPixel(rightX, i, a_color, m_DoubleLineVertical); //Right Vertical Line
 		}
 	}
 }
 
-void Utils::DrawFrameTopLeftSingleLined(COORD* position, int width, int height, int color)
+void Utils::DrawFrameTopLeftSingleLined(COORD* a_position, int a_width, int a_height, int a_color)
 {
-	int leftX = position->X;
-	int topY = position->Y;
-	int rightX = leftX + width;
-	int bottomY = topY + height;
+	int leftX = a_position->X;
+	int topY = a_position->Y;
+	int rightX = leftX + a_width;
+	int bottomY = topY + a_height;
 
 	{
-		DrawPixel(leftX, topY, color, m_SingleLineCornerTopLeft); //Top left corner of drawframe
-		DrawPixel(rightX, topY, color, m_SingleLineCornerTopRight); //Top right corner of drawframe
-		DrawPixel(leftX, bottomY, color, m_SingleLineCornerBottomLeft); //Bottom left corner of drawframe
-		DrawPixel(rightX, bottomY, color, m_SingleLineCornerBottomRight); //Bottom right corner of drawframe
+		DrawPixel(leftX, topY, a_color, m_SingleLineCornerTopLeft); //Top left corner of drawframe
+		DrawPixel(rightX, topY, a_color, m_SingleLineCornerTopRight); //Top right corner of drawframe
+		DrawPixel(leftX, bottomY, a_color, m_SingleLineCornerBottomLeft); //Bottom left corner of drawframe
+		DrawPixel(rightX, bottomY, a_color, m_SingleLineCornerBottomRight); //Bottom right corner of drawframe
 
 		for (int i = leftX + 1; i < rightX; i++)
 		{
-			DrawPixel(i, topY, color, m_SingleLineHorizontal); // Top horizontol line
-			DrawPixel(i, bottomY, color, m_SingleLineHorizontal); // Bottom Horizontal line
+			DrawPixel(i, topY, a_color, m_SingleLineHorizontal); // Top horizontol line
+			DrawPixel(i, bottomY, a_color, m_SingleLineHorizontal); // Bottom Horizontal line
 		}
 
 		for (int i = topY + 1; i < bottomY; i++)
 		{
-			DrawPixel(leftX, i, color, m_SingleLineVertical); //Left Vertical line
-			DrawPixel(rightX, i, color, m_SingleLineVertical); //Right Vertical Line
+			DrawPixel(leftX, i, a_color, m_SingleLineVertical); //Left Vertical line
+			DrawPixel(rightX, i, a_color, m_SingleLineVertical); //Right Vertical Line
 		}
 	}
 }
@@ -404,10 +404,10 @@ void Utils::DrawColorPalette()
 	}
 }
 
-void Utils::DrawColorPalette(COORD* position)
+void Utils::DrawColorPalette(COORD* a_position)
 {
-	int x = position->X;
-	int y = position->Y;
+	int x = a_position->X;
+	int y = a_position->Y;
 
 	for (int i = x; i < 16 + x; i++)
 	{
@@ -435,49 +435,49 @@ void Utils::DrawCharPalette()
 	}
 }
 
-void Utils::DrawCharPalette(COORD* position, int Color)
+void Utils::DrawCharPalette(COORD* a_position, int a_color)
 {
-	SetCursorPosition(position);
-	SetColor(Color);
+	SetCursorPosition(a_position);
+	SetColor(a_color);
 	for (int i = 0; i < 256; i++)
 	{
 		std::cout << (unsigned char)i << " " << i << "\n";
 	}
 }
 
-void Utils::DrawString(COORD* position, unsigned char color, const std::string text)
+void Utils::DrawString(COORD* a_position, unsigned char a_color, const std::string a_text)
 {
-	SetColor(color);
-	SetCursorPosition(position);
-	std::cout << text;
+	SetColor(a_color);
+	SetCursorPosition(a_position);
+	std::cout << a_text;
 }
 
-void Utils::DrawString(COORD* position, unsigned char color, const std::vector<std::string>* text)
+void Utils::DrawString(COORD* a_position, unsigned char a_color, const std::vector<std::string>* a_text)
 {
-	for (int i = 0; i < text->size(); i++)
+	for (int i = 0; i < a_text->size(); i++)
 	{
-		COORD newPos{ position->X, position->Y + i };
-		DrawString(&newPos, color, (*text)[i]);
+		COORD newPos{ a_position->X, a_position->Y + i };
+		DrawString(&newPos, a_color, (*a_text)[i]);
 	}
 }
 
-void Utils::DrawWString(COORD* position, unsigned char color, const std::wstring text)
+void Utils::DrawWString(COORD* a_position, unsigned char a_color, const std::wstring a_text)
 {
 	int i = _setmode(_fileno(stdout), 0x20000);
 
-	SetColor(color);
-	SetCursorPosition(position);
-	std::wcout << text;
+	SetColor(a_color);
+	SetCursorPosition(a_position);
+	std::wcout << a_text;
 
 	i = _setmode(_fileno(stdout), _O_TEXT);
 }
 
-void Utils::DrawWString(COORD* position, unsigned char color, const std::vector<std::wstring>* text)
+void Utils::DrawWString(COORD* a_position, unsigned char a_color, const std::vector<std::wstring>* a_text)
 {
-	for (int i = 0; i < text->size(); i++)
+	for (int i = 0; i < a_text->size(); i++)
 	{
-		COORD newPosition = *position;
+		COORD newPosition = *a_position;
 		newPosition.Y += i;
-		DrawWString(&newPosition, color, (*text)[i]);
+		DrawWString(&newPosition, a_color, (*a_text)[i]);
 	}
 }

@@ -12,7 +12,7 @@
 class Button : public IDrawable
 {
 public:
-	Button(COORD position, int width, int height, unsigned char buttonColor, unsigned char hoverColor, std::wstring buttonName);
+	Button(COORD a_position, int a_width, int a_height, unsigned char a_buttonColor, unsigned char a_hoverColor, std::wstring a_buttonName);
 
 	inline COORD* GetPosition() { return &m_position; }
 	inline Event<>& GetOnButtonClickedEvent() { return m_onButtonClicked; }
@@ -22,12 +22,12 @@ public:
 
 	void OnClicked();
 
-	void OnHoveredChanged(bool value);
+	void OnHoveredChanged(bool a_value);
 
-	bool PointInButton(COORD* coord);
+	bool PointInButton(COORD* a_coord);
 
 private:
-	void ActualDraw(unsigned char color);
+	void ActualDraw(unsigned char a_color);
 
 	COORD m_position{};
 	int m_width{ 0 };

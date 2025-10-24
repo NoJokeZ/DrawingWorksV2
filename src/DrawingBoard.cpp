@@ -3,14 +3,20 @@
 
 DrawingBoard::DrawingBoard()
 {
-	m_inputManager.EnableMouseInput(true);
-	m_inputManager.EnableDrawing(true);
+	m_inputManager->EnableMouseInput(true);
+	m_inputManager->EnableDrawing(true);
 
-	m_inputManager.GetKeyInputEvent(VK_ESCAPE)	+= [this]() { ExitDrawing(); };
-	m_inputManager.GetKeyInputEvent(VK_F1)		+= [this]() { DrawControls(); };
-	m_inputManager.GetKeyInputEvent(VK_F2)		+= Utils::ClearScreen;
-	m_inputManager.GetKeyInputEvent(VK_F3)		+= Utils::EnableFullscreen;
-	m_inputManager.GetKeyInputEvent(VK_F4)		+= Utils::EnableWindowedMode;
+	m_inputManager->GetKeyInputEvent(VK_ESCAPE)	+= [this]() { ExitDrawing(); };
+	m_inputManager->GetKeyInputEvent(VK_F1)		+= [this]() { DrawControls(); };
+	m_inputManager->GetKeyInputEvent(VK_F2)		+= Utils::ClearScreen;
+	m_inputManager->GetKeyInputEvent(VK_F3)		+= Utils::EnableFullscreen;
+	m_inputManager->GetKeyInputEvent(VK_F4)		+= Utils::EnableWindowedMode;
+}
+
+DrawingBoard::~DrawingBoard()
+{
+	delete m_inputManager;
+	m_inputManager = nullptr;
 }
 
 void DrawingBoard::Load()
@@ -31,7 +37,7 @@ void DrawingBoard::DrawingLoop()
 {
 	while (!m_hasUserExited)
 	{
-		m_inputManager.HandleInput();
+		m_inputManager->HandleInput();
 	}
 }
 

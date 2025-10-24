@@ -1,17 +1,38 @@
 #include "Input.h"
 
+#pragma region Enum operator functions
+Input::MouseInputType operator|(Input::MouseInputType leftVal, Input::MouseInputType rightVal)
+{
+	using T = std::underlying_type<Input::MouseInputType>::type;
+	return static_cast<Input::MouseInputType>(static_cast<T>(leftVal) | static_cast<T>(rightVal));
+}
+
+Input::MouseInputType operator&(Input::MouseInputType leftVal, Input::MouseInputType rightVal)
+{
+	using T = std::underlying_type<Input::MouseInputType>::type;
+	return static_cast<Input::MouseInputType>(static_cast<T>(leftVal) & static_cast<T>(rightVal));
+}
+
+Input::MouseInputType operator~(Input::MouseInputType val)
+{
+	using T = std::underlying_type<Input::MouseInputType>::type;
+	return static_cast<Input::MouseInputType>(~(static_cast<T>(val)));
+}
+#pragma endregion
+
+
 Input::Input()
 {
 	Initialize();
 }
 
-Input::Input(std::vector<Button*> buttons)
+Input::Input(std::vector<Button*> a_buttons)
 {
-	m_buttons = buttons;
+	m_buttons = a_buttons;
 
-	for (size_t i = 0; i < buttons.size(); i++)
+	for (size_t i = 0; i < m_buttons.size(); i++)
 	{
-		m_drawables.push_back(buttons[i]);
+		m_drawables.push_back(m_buttons[i]);
 	}
 
 	Initialize();
@@ -32,11 +53,11 @@ void Input::Initialize()
 	srand(time(0));
 }
 
-void Input::EnableMouseInput(bool value)
+void Input::EnableMouseInput(bool a_value)
 {
-	m_isMouseInputEnabled = value;
+	m_isMouseInputEnabled = a_value;
 	DWORD consoleInputMode;
-	if (value)
+	if (m_isMouseInputEnabled)
 	{
 		consoleInputMode = (ENABLE_WINDOW_INPUT | ENABLE_MOUSE_INPUT | ENABLE_EXTENDED_FLAGS) & ~ENABLE_QUICK_EDIT_MODE;
 	}
@@ -48,19 +69,19 @@ void Input::EnableMouseInput(bool value)
 	SetConsoleMode(m_inputHandle, consoleInputMode);
 }
 
-void Input::EnableDrawing(bool value)
+void Input::EnableDrawing(bool a_value)
 {
-	m_isDrawingEnabled = value;
+	m_isDrawingEnabled = a_value;
 }
 
-Event<>& Input::GetKeyInputEvent(WORD key)
+Event<>& Input::GetKeyInputEvent(WORD a_key)
 {
-	return m_keyInputEvents[key];
+	return m_keyInputEvents[a_key];
 }
 
-Event<>& Input::GetSpecialInputEvent(WORD specialInputType)
+Event<>& Input::GetSpecialInputEvent(WORD a_specialInputType)
 {
-	return m_specialInputEvents[specialInputType];
+	return m_specialInputEvents[a_specialInputType];
 }
 
 void Input::HandleInput()
@@ -208,11 +229,11 @@ void Input::HandleInput()
 	FlushConsoleInputBuffer(m_inputHandle);
 }
 
-Input::MouseInputType Input::InterpretMouseInput(INPUT_RECORD inputRecord)
+Input::MouseInputType Input::InterpretMouseInput(INPUT_RECORD a_inputRecord)
 {
 	MouseInputType inputType;
 
-	switch (inputRecord.Event.MouseEvent.dwButtonState)
+	switch (a_inputRecord.Event.MouseEvent.dwButtonState)
 	{
 	case FROM_LEFT_1ST_BUTTON_PRESSED:
 		inputType = MouseInputType::LeftClick;
@@ -229,23 +250,23 @@ Input::MouseInputType Input::InterpretMouseInput(INPUT_RECORD inputRecord)
 		break;
 	}
 
-	if (inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_ALT_PRESSED)
+	if (a_inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_ALT_PRESSED)
 	{
 		inputType = inputType | MouseInputType::LeftAlt;
 	}
-	else if (inputRecord.Event.MouseEvent.dwControlKeyState & RIGHT_ALT_PRESSED)
+	else if (a_inputRecord.Event.MouseEvent.dwControlKeyState & RIGHT_ALT_PRESSED)
 	{
 		inputType = inputType | MouseInputType::RightAlt;
 	}
-	else if (inputRecord.Event.MouseEvent.dwControlKeyState & SHIFT_PRESSED)
+	else if (a_inputRecord.Event.MouseEvent.dwControlKeyState & SHIFT_PRESSED)
 	{
 		inputType = inputType | MouseInputType::Shift;
 	}
-	else if (inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_CTRL_PRESSED)
+	else if (a_inputRecord.Event.MouseEvent.dwControlKeyState & LEFT_CTRL_PRESSED)
 	{
 		inputType = inputType | MouseInputType::LeftCtrl;
 	}
-	else if (inputRecord.Event.MouseEvent.dwControlKeyState & RIGHT_CTRL_PRESSED)
+	else if (a_inputRecord.Event.MouseEvent.dwControlKeyState & RIGHT_CTRL_PRESSED)
 	{
 		inputType = inputType | MouseInputType::RightCtrl;
 	}

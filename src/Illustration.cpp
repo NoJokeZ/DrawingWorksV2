@@ -1,10 +1,10 @@
 #include "Illustration.h"
 
-Illustration::Illustration(COORD position, unsigned char color, std::vector<std::wstring>* illustration)
+Illustration::Illustration(COORD a_position, unsigned char a_color, std::vector<std::wstring>* a_illustration)
 {
-	m_position = position;
-	m_color = color;
-	m_illustration = illustration;
+	m_position = a_position;
+	m_color = a_color;
+	m_illustration = a_illustration;
 }
 
 void Illustration::Draw()
@@ -12,7 +12,7 @@ void Illustration::Draw()
 	Utils::DrawWString(&m_position, m_color, m_illustration);
 }
 
-void Illustration::ChangeColor(unsigned char color)
+void Illustration::ChangeColor(unsigned char a_color)
 {
-	m_color = color;
+	m_color = a_color;
 }

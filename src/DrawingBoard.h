@@ -7,6 +7,7 @@ class DrawingBoard
 {
 public:
 	DrawingBoard();
+	~DrawingBoard();
 	void Load();
 
 private:
@@ -14,7 +15,7 @@ private:
 	void DrawControls();
 	void ExitDrawing();
 
-	Input m_inputManager{};
+	Input* m_inputManager = new Input();
 
 	bool m_hasUserExited{ false };
 };

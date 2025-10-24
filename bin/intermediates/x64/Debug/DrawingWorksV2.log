@@ -1,10 +1,79 @@
-﻿  Input.cpp
+﻿  DrawingBoard.cpp
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.h(10,14): warning C4091: "static ": Ignoriert auf der linken Seite von "Utils", wenn keine Variable deklariert wurde
+  (Quelldatei „src/DrawingBoard.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Input.h(22,3): warning C4369: "Input::MouseInputType": Der Enumeratorwert "128" kann nicht als "char" dargestellt werden, der Wert ist "128".
+  (Quelldatei „src/DrawingBoard.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\ConsoleArtLibrary.h(5,14): warning C4091: "static ": Ignoriert auf der linken Seite von "ConsoleArtLibrary", wenn keine Variable deklariert wurde
+  (Quelldatei „src/DrawingBoard.cpp“ wird kompiliert)
+  
+  LoadingScreen.cpp
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.h(10,14): warning C4091: "static ": Ignoriert auf der linken Seite von "Utils", wenn keine Variable deklariert wurde
+  (Quelldatei „src/LoadingScreen.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\ConsoleArtLibrary.h(5,14): warning C4091: "static ": Ignoriert auf der linken Seite von "ConsoleArtLibrary", wenn keine Variable deklariert wurde
+  (Quelldatei „src/LoadingScreen.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\LoadingScreen.cpp(12,12): warning C4244: "Argument": Konvertierung von "time_t" in "unsigned int", möglicher Datenverlust
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\LoadingScreen.cpp(50,34): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+  Menu.cpp
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.h(10,14): warning C4091: "static ": Ignoriert auf der linken Seite von "Utils", wenn keine Variable deklariert wurde
+  (Quelldatei „src/Menu.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Input.h(22,3): warning C4369: "Input::MouseInputType": Der Enumeratorwert "128" kann nicht als "char" dargestellt werden, der Wert ist "128".
+  (Quelldatei „src/Menu.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\ConsoleArtLibrary.h(5,14): warning C4091: "static ": Ignoriert auf der linken Seite von "ConsoleArtLibrary", wenn keine Variable deklariert wurde
+  (Quelldatei „src/Menu.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Menu.cpp(45,12): warning C4244: "Argument": Konvertierung von "time_t" in "unsigned int", möglicher Datenverlust
+  Button.cpp
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.h(10,14): warning C4091: "static ": Ignoriert auf der linken Seite von "Utils", wenn keine Variable deklariert wurde
+  (Quelldatei „src/Button.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Button.cpp(26,53): warning C4267: "=": Konvertierung von "size_t" nach "SHORT", Datenverlust möglich
+  DrawingWorksV2.cpp
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.h(10,14): warning C4091: "static ": Ignoriert auf der linken Seite von "Utils", wenn keine Variable deklariert wurde
+  (Quelldatei „src/DrawingWorksV2.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Input.h(22,3): warning C4369: "Input::MouseInputType": Der Enumeratorwert "128" kann nicht als "char" dargestellt werden, der Wert ist "128".
+  (Quelldatei „src/DrawingWorksV2.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\ConsoleArtLibrary.h(5,14): warning C4091: "static ": Ignoriert auf der linken Seite von "ConsoleArtLibrary", wenn keine Variable deklariert wurde
+  (Quelldatei „src/DrawingWorksV2.cpp“ wird kompiliert)
+  
+  Input.cpp
 C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.h(10,14): warning C4091: "static ": Ignoriert auf der linken Seite von "Utils", wenn keine Variable deklariert wurde
   (Quelldatei „src/Input.cpp“ wird kompiliert)
   
 C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Input.h(22,3): warning C4369: "Input::MouseInputType": Der Enumeratorwert "128" kann nicht als "char" dargestellt werden, der Wert ist "128".
   (Quelldatei „src/Input.cpp“ wird kompiliert)
   
-C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Input.cpp(32,12): warning C4244: "Argument": Konvertierung von "time_t" in "unsigned int", möglicher Datenverlust
-C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Input.cpp(72,8): warning C4101: "point": Unreferenzierte lokale Variable
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Input.cpp(53,12): warning C4244: "Argument": Konvertierung von "time_t" in "unsigned int", möglicher Datenverlust
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Input.cpp(93,8): warning C4101: "point": Unreferenzierte lokale Variable
+  Utils.cpp
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.h(10,14): warning C4091: "static ": Ignoriert auf der linken Seite von "Utils", wenn keine Variable deklariert wurde
+  (Quelldatei „src/Utils.cpp“ wird kompiliert)
+  
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(119,18): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(119,23): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(134,18): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(134,23): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(269,17): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(269,24): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(270,20): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(270,27): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(271,18): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(271,26): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(272,21): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(272,29): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(396,21): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(396,26): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(417,21): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(417,26): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(423,17): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(423,22): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+C:\Users\pfall\Documents\GitHub\DrawingWorksV2\src\Utils.cpp(459,46): warning C4838: Konvertierung von "int" zu "SHORT" erfordert eine einschränkende Konvertierung
+  Code wird generiert...
   DrawingWorksV2.vcxproj -> C:\Users\pfall\Documents\GitHub\DrawingWorksV2\bin\x64\Debug\DrawingWorksV2.exe

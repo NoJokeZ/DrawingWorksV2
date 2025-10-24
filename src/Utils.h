@@ -10,63 +10,63 @@
 static class Utils
 {
 public:
-	static void ChangeManualWindowResizing(bool value);
+	static void ChangeManualWindowResizing(bool a_value);
 
-	static void ChangeWindowSize(int width, int height);
+	static void ChangeWindowSize(int a_width, int a_height);
 
 	static void ClearScreen();
 
-	static void ResetScreen(std::vector<IDrawable*>* drawables);
+	static void ResetScreen(std::vector<IDrawable*>* a_drawables);
 
 	static void EnableFullscreen();
 
 	static void EnableWindowedMode();
 
-	static void setForeGroundAndBackGroundColor(int ForeGroundColor, int BackGroundColor);
+	static void setForeGroundAndBackGroundColor(int a_foreGroundColor, int a_backGroundColor);
 
 	static void SetCursorPosition();
 
-	static void SetCursorPosition(COORD* position);
+	static void SetCursorPosition(COORD* a_position);
 
-	static void SetColor(WORD color);
+	static void SetColor(WORD a_color);
 
-	static void DrawPixel(COORD* position, unsigned char Color);
+	static void DrawPixel(COORD* a_position, unsigned char a_color);
 
-	static void DrawPixel(int x, int y, unsigned char Color);
+	static void DrawPixel(int a_x, int a_y, unsigned char a_color);
 
-	static void DrawPixel(COORD* position, unsigned char Color, char character);
+	static void DrawPixel(COORD* a_position, unsigned char a_color, char a_character);
 
-	static void DrawPixel(int x, int y, unsigned char Color, char character);
+	static void DrawPixel(int a_x, int a_y, unsigned char a_color, char a_character);
 
-	static void DrawCircle(COORD* position, int radius, int color);
+	static void DrawCircle(COORD* a_position, int a_radius, int a_color);
 
-	static void DrawLine(COORD* position0, COORD* position1, int color);
+	static void DrawLine(COORD* a_position0, COORD* a_position1, int a_color);
 
-	static void DrawBigX(COORD* position, int size, int color);
+	static void DrawBigX(COORD* a_position, int a_size, int a_color);
 
-	static void DrawFrameCenter(COORD* position, int width, int height, int color);
+	static void DrawFrameCenter(COORD* a_position, int a_width, int a_height, int a_color);
 
-	static void DrawFrameTopLeft(COORD* position, int width, int height, int color, char charakter);
+	static void DrawFrameTopLeft(COORD* a_position, int a_width, int a_height, int a_color, char a_charakter);
 
-	static void DrawFrameTopLeftDoubleLined(COORD* position, int width, int height, int color);
+	static void DrawFrameTopLeftDoubleLined(COORD* a_position, int a_width, int a_height, int a_color);
 
-	static void DrawFrameTopLeftSingleLined(COORD* position, int width, int height, int color);
+	static void DrawFrameTopLeftSingleLined(COORD* a_position, int a_width, int a_height, int a_color);
 
 	static void DrawColorPalette();
 
-	static void DrawColorPalette(COORD* position);
+	static void DrawColorPalette(COORD* a_position);
 
 	static void DrawCharPalette();
 
-	static void DrawCharPalette(COORD* position, int Color);
+	static void DrawCharPalette(COORD* a_position, int a_color);
 
-	static void DrawString(COORD* position, unsigned char color, const std::string text);
+	static void DrawString(COORD* a_position, unsigned char a_color, const std::string a_text);
 
-	static void DrawString(COORD* position, unsigned char color, const std::vector<std::string>* text);
+	static void DrawString(COORD* a_position, unsigned char a_color, const std::vector<std::string>* a_text);
 
-	static void DrawWString(COORD* position, unsigned char color, const std::wstring text);
+	static void DrawWString(COORD* a_position, unsigned char a_color, const std::wstring a_text);
 
-	static void DrawWString(COORD* position, unsigned char color, const std::vector<std::wstring>* text);
+	static void DrawWString(COORD* a_position, unsigned char a_color, const std::vector<std::wstring>* a_text);
 private:
 	static const unsigned char m_Square = (unsigned char)219;
 	static const unsigned char m_SquareLight = (unsigned char)176;

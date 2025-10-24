@@ -23,13 +23,13 @@ public:
 	};
 
 	Input();
-	Input(std::vector<Button*> buttons);
+	Input(std::vector<Button*> a_buttons);
 
-	void EnableMouseInput(bool value);
-	void EnableDrawing(bool value);
+	void EnableMouseInput(bool a_value);
+	void EnableDrawing(bool a_value);
 
-	Event<>& GetKeyInputEvent(WORD key);
-	Event<>& GetSpecialInputEvent(WORD specialInputType);
+	Event<>& GetKeyInputEvent(WORD a_key);
+	Event<>& GetSpecialInputEvent(WORD a_specialInputType);
 
 	void HandleInput();
 
@@ -38,7 +38,7 @@ public:
 private:
 	void Initialize();
 
-	MouseInputType InterpretMouseInput(INPUT_RECORD inputRecord);
+	MouseInputType InterpretMouseInput(INPUT_RECORD a_inputRecord);
 
 	std::unordered_map<WORD, Event<>> m_keyInputEvents{};
 	std::unordered_map<WORD, Event<>> m_specialInputEvents{};
@@ -56,25 +56,4 @@ private:
 
 	bool m_isMouseInputEnabled{ false };
 	bool m_isDrawingEnabled{ false };
-
-
 };
-
-//Globale Operatorfunktionen auﬂerhalb der Klasse definieren
-inline Input::MouseInputType operator|(Input::MouseInputType leftVal, Input::MouseInputType rightVal)
-{
-    using T = std::underlying_type<Input::MouseInputType>::type;
-    return static_cast<Input::MouseInputType>(static_cast<T>(leftVal) | static_cast<T>(rightVal));
-}
-
-inline Input::MouseInputType operator&(Input::MouseInputType leftVal, Input::MouseInputType rightVal)
-{
-    using T = std::underlying_type<Input::MouseInputType>::type;
-    return static_cast<Input::MouseInputType>(static_cast<T>(leftVal) & static_cast<T>(rightVal));
-}
-
-inline Input::MouseInputType operator~(Input::MouseInputType val)
-{
-	using T = std::underlying_type<Input::MouseInputType>::type;
-	return static_cast<Input::MouseInputType>(~(static_cast<T>(val)));
-}

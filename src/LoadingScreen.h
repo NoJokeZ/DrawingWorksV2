@@ -14,7 +14,7 @@ public:
 
 private:
 
-	void AddFill(int value);
+	void AddFill(int a_value);
 
 	const int m_maxFillAmount{ 100 };
 	int m_currentFillAmount{ 0 };

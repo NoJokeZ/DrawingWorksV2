@@ -38,14 +38,14 @@ void LoadingScreen::FinishedLoading()
 }
 
 
-void LoadingScreen::AddFill(int value)
+void LoadingScreen::AddFill(int a_value)
 {
-	if (m_currentFillAmount + value > m_maxFillAmount)
+	if (m_currentFillAmount + a_value > m_maxFillAmount)
 	{
-		value = m_maxFillAmount - m_currentFillAmount;
+		a_value = m_maxFillAmount - m_currentFillAmount;
 	}
 
-	for (int i = 0; i < value; i++)
+	for (int i = 0; i < a_value; i++)
 	{
 		COORD pos{ m_loadingBarStart.X + m_currentFillAmount, m_loadingBarStart.Y };
 
