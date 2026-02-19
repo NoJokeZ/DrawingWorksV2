@@ -3,7 +3,7 @@
 
 std::vector<std::wstring>* ConsoleArtLibrary::MenuHeader()
 {
-	static std::vector<std::wstring> controls{
+	static std::vector<std::wstring> value{
 			LR"(╔════════════════════════════════════════════════════════════════════════════════════════════╗)",
 			LR"(║  ________                      .__                  __      __             __              ║)",
 			LR"(║  \______ \____________ __  _  _|__| ____    ____   /  \    /  \___________|  | __  ______  ║)",
@@ -13,35 +13,24 @@ std::vector<std::wstring>* ConsoleArtLibrary::MenuHeader()
 			LR"(║          \/           \/               \//_____/          \/                   \/     \/   ║)",
 			LR"(╚════════════════════════════════════════════════════════════════════════════════════════════╝)"
 	};
-	return &controls;
+	return &value;
 }
 
 std::vector<std::wstring>* ConsoleArtLibrary::LoadingBarEmpty()
 {
-	static std::vector<std::wstring> controls{
+	static std::vector<std::wstring> value{
 			LR"(╔══════════════════════════════════════════════════════════════════════════════════════════════════════╗)",
 			LR"(║                                                                                                      ║)",
 			LR"(║                                                                                                      ║)",
 			LR"(║                                                                                                      ║)",
 			LR"(╚══════════════════════════════════════════════════════════════════════════════════════════════════════╝)"
 	};
-	return &controls;
+	return &value;
 }
-
- std::vector<std::wstring>* ConsoleArtLibrary::LoadingBarFillElement()
-{
-	static std::vector<std::wstring> controls{
-			LR"(░)",
-			LR"(░)",
-			LR"(░)",
-	};
-	return &controls;
-}
-
 
 std::vector<std::wstring>* ConsoleArtLibrary::DrawingControls()
 {
-	static std::vector<std::wstring> controls{
+	static std::vector<std::wstring> value{
 			LR"(╔══════════════════════════════════════════════════════════════════════════════╗)",
 			LR"(║                                                                              ║)",
 			LR"(║                              Drawing Controls                                ║)",
@@ -62,5 +51,26 @@ std::vector<std::wstring>* ConsoleArtLibrary::DrawingControls()
 			LR"(║ F4                      ->     Windowed                                      ║)",
 			LR"(╚══════════════════════════════════════════════════════════════════════════════╝)"
 	};
-	return &controls;
+	return &value;
 }
+
+std::vector<std::wstring>* ConsoleArtLibrary::LoadingBarFillElement()
+{
+	static std::vector<std::wstring> value{
+			LR"(░)",
+			LR"(░)",
+			LR"(░)",
+	};
+	return &value;
+}
+
+std::vector<std::wstring>* ConsoleArtLibrary::Credits()
+{
+	static std::vector<std::wstring> value{
+		LR"(░)",
+		LR"(░)",
+		LR"(░)",
+	};
+	return &value;
+}
+

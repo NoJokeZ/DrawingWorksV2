@@ -19,9 +19,7 @@ Button::Button(COORD a_position, int a_width, int a_height, unsigned char a_butt
 	m_buttonColor = a_buttonColor;
 	m_hoverColor = a_hoverColor;
 
-
 	m_label = a_buttonName;
-
 
 	m_labelPosition.X = (m_position.X + (m_width / 2)) - (a_buttonName.length() / 2);
 	m_labelPosition.Y = (m_position.Y + (m_height / 2));

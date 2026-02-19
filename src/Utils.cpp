@@ -65,7 +65,7 @@ void Utils::EnableWindowedMode()
 	SetConsoleDisplayMode(GetStdHandle(STD_OUTPUT_HANDLE), CONSOLE_WINDOWED_MODE, 0);
 }
 
-void Utils::setForeGroundAndBackGroundColor(int a_foreGroundColor, int a_backGroundColor)
+void Utils::SetForeGroundAndBackGroundColor(int a_foreGroundColor, int a_backGroundColor)
 {
 	int color = 16 * a_backGroundColor + a_foreGroundColor;
 	SetColor(color);
@@ -392,12 +392,12 @@ void Utils::DrawColorPalette()
 	{
 		for (int j = 0; j < 16; j++)
 		{
-			setForeGroundAndBackGroundColor(i, j);
+			SetForeGroundAndBackGroundColor(i, j);
 			COORD drawPos{ i * 6, j };
 			SetCursorPosition(&drawPos);
 			std::cout << i << "," << j;
 		}
-		setForeGroundAndBackGroundColor(7, 0);
+		SetForeGroundAndBackGroundColor(7, 0);
 		COORD drawPos{ 0,17 };
 		SetCursorPosition(&drawPos);
 		std::cout << "Forgroundcolor, backgroundcolor";
@@ -413,13 +413,13 @@ void Utils::DrawColorPalette(COORD* a_position)
 	{
 		for (int j = y; j < 16 + y; j++)
 		{
-			setForeGroundAndBackGroundColor(i - x, j - y);
+			SetForeGroundAndBackGroundColor(i - x, j - y);
 			COORD drawPos{ i * 6, j };
 			SetCursorPosition(&drawPos);
 			std::cout << i << "," << j;
 		}
 	}
-	setForeGroundAndBackGroundColor(7, 0);
+	SetForeGroundAndBackGroundColor(7, 0);
 	COORD drawPos{ x, y + 17 };
 	SetCursorPosition(&drawPos);
 	std::cout << "Forgroundcolor, backgroundcolor";

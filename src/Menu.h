@@ -10,31 +10,44 @@ class Menu
 public:
 	~Menu();
 
+	/// <summary>
+	/// Initializes the menu
+	/// </summary>
 	void Initialize();
+
+	/// <summary>
+	/// Loads the menu
+	/// </summary>
 	void Load();
 
 
 private:
+	/// <summary>
+	/// Starts the menu loop
+	/// </summary>
 	void MenuLoop();
 
+	/// <summary>
+	/// Loads into the drawing board
+	/// </summary>
 	void LoadDrawingBoard();
 	
-	void LoadCalculator();
-	void LoadHelp();
-	void LoadCredits();
+	/// <summary>
+	/// Exits the application
+	/// </summary>
 	void Exit();
 
+	/// <summary>
+	/// Draws the menu into the console
+	/// </summary>
 	void DrawMenu();
 
 	DrawingBoard* m_drawingBoard = new DrawingBoard{};
 
-	Button* m_drawingBoardButton = new Button(COORD{13, 9}, 20, 4, 15, 9, L"<Drawing Board>" );
-	Button* m_calculatorButton = new Button(COORD{37, 9}, 20, 4, 15, 9,  L"<Calculator>");
-	Button* m_helpButton = new Button(COORD{61, 9}, 20, 4, 15, 9,  L"<Help>");
-	Button* m_creditsButton = new Button(COORD{25, 15}, 20, 4, 15, 9,  L"<Credits>");
-	Button* m_exitButton = new Button(COORD{49, 15}, 20, 4, 15, 9,  L"<Exit>");
+	Button* m_drawingBoardButton = new Button(COORD{10, 9}, 30, 4, 15, 9, L"<Drawing Board>" );
+	Button* m_exitButton		 = new Button(COORD{52, 9}, 30, 4, 15, 9, L"<Exit>");
 
-	std::vector<Button*> m_buttons { m_drawingBoardButton, m_calculatorButton, m_helpButton, m_creditsButton, m_exitButton };
+	std::vector<Button*> m_buttons { m_drawingBoardButton, m_exitButton };
 	
 	Illustration* m_menuHeader = new Illustration(COORD{ 0,0 }, 15, ConsoleArtLibrary::MenuHeader() );
 

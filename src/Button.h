@@ -14,19 +14,38 @@ class Button : public IDrawable
 public:
 	Button(COORD a_position, int a_width, int a_height, unsigned char a_buttonColor, unsigned char a_hoverColor, std::wstring a_buttonName);
 
+	/// <summary>
+	/// Draws the button
+	/// </summary>
+	virtual void Draw();
+
+	/// <summary>
+	/// Handles the on click event
+	/// </summary>
+	void OnClicked();
+
+	/// <summary>
+	/// Handles if the hoverd state changes
+	/// </summary>
+	/// <param name="a_value"></param>
+	void OnHoveredChanged(bool a_value);
+
+	/// <summary>
+	/// Checks if a coordinate is inside the button
+	/// </summary>
+	/// <param name="a_coord"></param>
+	/// <returns></returns>
+	bool PointInButton(COORD* a_coord);
+
 	inline COORD* GetPosition() { return &m_position; }
 	inline Event<>& GetOnButtonClickedEvent() { return m_onButtonClicked; }
 	inline bool GetButtonHoverState() { return m_isHoveredOver; }
 
-	virtual void Draw();
-
-	void OnClicked();
-
-	void OnHoveredChanged(bool a_value);
-
-	bool PointInButton(COORD* a_coord);
-
 private:
+	/// <summary>
+	/// Actually draw the button
+	/// </summary>
+	/// <param name="a_color"></param>
 	void ActualDraw(unsigned char a_color);
 
 	COORD m_position{};

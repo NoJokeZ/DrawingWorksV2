@@ -3,9 +3,9 @@
 
 int main()
 {
-	Menu* _menu = new Menu();
-	_menu->Initialize();
-	delete _menu;
-	_menu = nullptr;
+	Menu* menu = new Menu();
+	menu->Initialize();
+	delete menu;
+	menu = nullptr;
 	return 0;
 }

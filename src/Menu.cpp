@@ -25,9 +25,6 @@ void Menu::Initialize()
 	
 	//Button events
 	m_drawingBoardButton->GetOnButtonClickedEvent()	+= [this]() { LoadDrawingBoard(); };
-	m_calculatorButton->GetOnButtonClickedEvent()	+= [this]() { LoadCalculator(); };
-	m_helpButton->GetOnButtonClickedEvent()			+= [this]() { LoadHelp(); };
-	m_creditsButton->GetOnButtonClickedEvent()		+= [this]() { LoadCredits(); };
 	m_exitButton->GetOnButtonClickedEvent()			+= [this]() { Exit(); };
 
 	Load();
@@ -70,21 +67,6 @@ void Menu::LoadDrawingBoard()
 	loadingScreen.GetOnLoadingFinishedEvent() += [this]() { m_drawingBoard->Load(); };
 
 	loadingScreen.StartLoading();
-}
-
-void Menu::LoadCalculator()
-{
-	m_hasUserSelected = true;
-}
-
-void Menu::LoadHelp()
-{
-	m_hasUserSelected = true;
-}
-
-void Menu::LoadCredits()
-{
-	m_hasUserSelected = true;
 }
 
 void Menu::Exit()

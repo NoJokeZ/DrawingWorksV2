@@ -6,12 +6,17 @@
 class LoadingScreen
 {
 public:
-	inline Event<>& GetOnLoadingFinishedEvent() { return m_onLoadingFinished; }
-
+	/// <summary>
+	/// Starts the loading progress
+	/// </summary>
 	void StartLoading();
 
+	/// <summary>
+	/// Finalizes the loading process
+	/// </summary>
 	void FinishedLoading();
 
+	inline Event<>& GetOnLoadingFinishedEvent() { return m_onLoadingFinished; }
 private:
 
 	void AddFill(int a_value);
@@ -24,6 +29,5 @@ private:
 	Event<> m_onLoadingFinished{};
 
 	unsigned char m_color{};
-
 };
 

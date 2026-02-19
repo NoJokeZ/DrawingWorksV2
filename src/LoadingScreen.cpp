@@ -53,5 +53,4 @@ void LoadingScreen::AddFill(int a_value)
 
 		m_currentFillAmount++;
 	}
-
 }

@@ -74,16 +74,6 @@ void Input::EnableDrawing(bool a_value)
 	m_isDrawingEnabled = a_value;
 }
 
-Event<>& Input::GetKeyInputEvent(WORD a_key)
-{
-	return m_keyInputEvents[a_key];
-}
-
-Event<>& Input::GetSpecialInputEvent(WORD a_specialInputType)
-{
-	return m_specialInputEvents[a_specialInputType];
-}
-
 void Input::HandleInput()
 {
 
