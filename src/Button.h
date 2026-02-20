@@ -1,3 +1,18 @@
+/*****************************************************************************
+* Project: DrawingWorksV2
+* File : Button.h
+* Date : 09.09.2025
+* Author : Bastian Pfaller (BP)
+*
+* A custom button class that can display a button in the console.
+* The button can have diffrent visuals for it's hovered state.
+* 
+* 
+* History:
+* 09.09.25 BP Created
+******************************************************************************/
+
+
 #pragma once
 #include <iostream>
 #include <string>

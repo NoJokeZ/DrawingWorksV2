@@ -1,3 +1,16 @@
+/*****************************************************************************
+* Project: DrawingWorksV2
+* File : Illustration.h
+* Date : 06.10.2025
+* Author : Bastian Pfaller (BP)
+*
+* A class for simple console art / illustration
+* that implements IDrawable and allows the change of color.
+*
+* History:
+* 06.10.25 BP Created
+******************************************************************************/
+
 #pragma once
 #include <iostream>
 #include <vector>

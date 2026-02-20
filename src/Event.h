@@ -1,3 +1,16 @@
+/*****************************************************************************
+* Project: DrawingWorksV2
+* File : Event.h
+* Date : 09.09.2025
+* Author : Bastian Pfaller (BP)
+*
+* A custom simple event class that allows subscribing of functions
+* and the ability to invoke the event.
+*
+* History:
+* 09.09.25 BP Created
+******************************************************************************/
+
 #pragma once
 #include <iostream>
 #include <vector>

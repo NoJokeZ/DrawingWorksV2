@@ -26,7 +26,7 @@ void LoadingScreen::StartLoading()
 		//int sleepAmount = rand() % 400 + 100;
 		std::this_thread::sleep_for(std::chrono::milliseconds(sleepAmount));
 
-		if (m_currentFillAmount >= m_maxFillAmount) isLoadingFinished = true;
+		if (m_currentFillAmount >= M_MAXFILLAMOUNT) isLoadingFinished = true;
 	}
 
 	FinishedLoading();
@@ -40,14 +40,14 @@ void LoadingScreen::FinishedLoading()
 
 void LoadingScreen::AddFill(int a_value)
 {
-	if (m_currentFillAmount + a_value > m_maxFillAmount)
+	if (m_currentFillAmount + a_value > M_MAXFILLAMOUNT)
 	{
-		a_value = m_maxFillAmount - m_currentFillAmount;
+		a_value = M_MAXFILLAMOUNT - m_currentFillAmount;
 	}
 
 	for (int i = 0; i < a_value; i++)
 	{
-		COORD pos{ m_loadingBarStart.X + m_currentFillAmount, m_loadingBarStart.Y };
+		COORD pos{ M_LOADINGBARSTART.X + m_currentFillAmount, M_LOADINGBARSTART.Y };
 
 		Utils::DrawWString(&pos, m_color, ConsoleArtLibrary::LoadingBarFillElement());
 

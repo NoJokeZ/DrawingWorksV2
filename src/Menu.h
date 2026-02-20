@@ -1,3 +1,17 @@
+/*****************************************************************************
+* Project: DrawingWorksV2
+* File : Menu.h
+* Date : 06.10.2025
+* Author : Bastian Pfaller (BP)
+*
+* The menu of the application that connects all parts with a simple layout and
+* buttons that lead to the underlying programm-parts.
+*
+* History:
+* 06.10.25 BP Created
+******************************************************************************/
+
+
 #pragma once
 #include "Button.h"
 #include "Input.h"

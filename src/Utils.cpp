@@ -110,7 +110,7 @@ void Utils::DrawPixel(COORD* a_position, unsigned char a_color)
 {
 	SetColor(a_color);
 	SetCursorPosition(a_position);
-	std::cout << m_Square;
+	std::cout << M_SQUARE;
 }
 
 void Utils::DrawPixel(int a_x, int a_y, unsigned char a_color)
@@ -118,7 +118,7 @@ void Utils::DrawPixel(int a_x, int a_y, unsigned char a_color)
 	SetColor(a_color);
 	COORD position{ a_x, a_y };
 	SetCursorPosition(&position);
-	std::cout << m_Square;
+	std::cout << M_SQUARE;
 }
 
 void Utils::DrawPixel(COORD* a_position, unsigned char a_color, char a_character)
@@ -340,21 +340,21 @@ void Utils::DrawFrameTopLeftDoubleLined(COORD* a_position, int a_width, int a_he
 	int bottomY = topY + a_height;
 
 	{
-		DrawPixel(leftX, topY, a_color, m_DoubleLineCornerTopLeft); //Top left corner of drawframe
-		DrawPixel(rightX, topY, a_color, m_DoubleLineCornerTopRight); //Top right corner of drawframe
-		DrawPixel(leftX, bottomY, a_color, m_DoubleLineCornerBottomLeft); //Bottom left corner of drawframe
-		DrawPixel(rightX, bottomY, a_color, m_DoubleLineCornerBottomRight); //Bottom right corner of drawframe
+		DrawPixel(leftX, topY, a_color, M_DOUBLELINECORNERTOPLEFT); //Top left corner of drawframe
+		DrawPixel(rightX, topY, a_color, M_DOUBLELINECORNERTOPRIGHT); //Top right corner of drawframe
+		DrawPixel(leftX, bottomY, a_color, M_DOUBLELINECORNERBOTTOMLEFT); //Bottom left corner of drawframe
+		DrawPixel(rightX, bottomY, a_color, M_DOUBLELINECORNERBOTTOMRIGHT); //Bottom right corner of drawframe
 
 		for (int i = leftX + 1; i < rightX; i++)
 		{
-			DrawPixel(i, topY, a_color, m_DoubleLineHorizontal); // Top horizontol line
-			DrawPixel(i, bottomY, a_color, m_DoubleLineHorizontal); // Bottom Horizontal line
+			DrawPixel(i, topY, a_color, M_DOUBLELINEHORIZONTAL); // Top horizontol line
+			DrawPixel(i, bottomY, a_color, M_DOUBLELINEHORIZONTAL); // Bottom Horizontal line
 		}
 
 		for (int i = topY + 1; i < bottomY; i++)
 		{
-			DrawPixel(leftX, i, a_color, m_DoubleLineVertical); //Left Vertical line
-			DrawPixel(rightX, i, a_color, m_DoubleLineVertical); //Right Vertical Line
+			DrawPixel(leftX, i, a_color, M_DOUBLELINEVERTICAL); //Left Vertical line
+			DrawPixel(rightX, i, a_color, M_DOUBLELINEVERTICAL); //Right Vertical Line
 		}
 	}
 }
@@ -367,21 +367,21 @@ void Utils::DrawFrameTopLeftSingleLined(COORD* a_position, int a_width, int a_he
 	int bottomY = topY + a_height;
 
 	{
-		DrawPixel(leftX, topY, a_color, m_SingleLineCornerTopLeft); //Top left corner of drawframe
-		DrawPixel(rightX, topY, a_color, m_SingleLineCornerTopRight); //Top right corner of drawframe
-		DrawPixel(leftX, bottomY, a_color, m_SingleLineCornerBottomLeft); //Bottom left corner of drawframe
-		DrawPixel(rightX, bottomY, a_color, m_SingleLineCornerBottomRight); //Bottom right corner of drawframe
+		DrawPixel(leftX, topY, a_color, M_SINGLELINECORNERTOPLEFT); //Top left corner of drawframe
+		DrawPixel(rightX, topY, a_color, M_SINGLELINECORNERTOPRIGHT); //Top right corner of drawframe
+		DrawPixel(leftX, bottomY, a_color, M_SINGLELINECORNERBOTTOMLEFT); //Bottom left corner of drawframe
+		DrawPixel(rightX, bottomY, a_color, M_SINGLELINECORNERBOTTOMRIGHT); //Bottom right corner of drawframe
 
 		for (int i = leftX + 1; i < rightX; i++)
 		{
-			DrawPixel(i, topY, a_color, m_SingleLineHorizontal); // Top horizontol line
-			DrawPixel(i, bottomY, a_color, m_SingleLineHorizontal); // Bottom Horizontal line
+			DrawPixel(i, topY, a_color, M_SINGLELINEHORIZONTAL); // Top horizontol line
+			DrawPixel(i, bottomY, a_color, M_SINGLELINEHORIZONTAL); // Bottom Horizontal line
 		}
 
 		for (int i = topY + 1; i < bottomY; i++)
 		{
-			DrawPixel(leftX, i, a_color, m_SingleLineVertical); //Left Vertical line
-			DrawPixel(rightX, i, a_color, m_SingleLineVertical); //Right Vertical Line
+			DrawPixel(leftX, i, a_color, M_SINGLELINEVERTICAL); //Left Vertical line
+			DrawPixel(rightX, i, a_color, M_SINGLELINEVERTICAL); //Right Vertical Line
 		}
 	}
 }

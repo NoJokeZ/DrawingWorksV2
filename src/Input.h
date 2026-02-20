@@ -1,3 +1,16 @@
+/*****************************************************************************
+* Project: DrawingWorksV2
+* File : Input.h
+* Date : 09.09.2025
+* Author : Bastian Pfaller (BP)
+*
+* An input class that can handle key and mouse inputs.
+* It also can handle buttons that are displayed in the console.
+*
+* History:
+* 09.09.25 BP Created
+******************************************************************************/
+
 #pragma once
 
 #include <vector>

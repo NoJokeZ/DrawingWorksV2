@@ -1,3 +1,15 @@
+/*****************************************************************************
+* Project: DrawingWorksV2
+* File : LoadingScreen.h
+* Date : 06.10.2025
+* Author : Bastian Pfaller (BP)
+*
+* A simple loading screen displayed in the console.
+*
+* History:
+* 06.10.25 BP Created
+******************************************************************************/
+
 #pragma once
 #include <Windows.h>
 #include "Event.h"
@@ -21,10 +33,10 @@ private:
 
 	void AddFill(int a_value);
 
-	const int m_maxFillAmount{ 100 };
+	const int M_MAXFILLAMOUNT{ 100 };
 	int m_currentFillAmount{ 0 };
 
-	const COORD m_loadingBarStart{2,1};
+	const COORD M_LOADINGBARSTART{2,1};
 
 	Event<> m_onLoadingFinished{};
 

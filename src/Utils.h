@@ -1,3 +1,16 @@
+/*****************************************************************************
+* Project: DrawingWorksV2
+* File : Utils.h
+* Date : 09.09.2025
+* Author : Bastian Pfaller (BP)
+*
+* A collection of helpful functions for diffrent objectives.
+* (Changing window settings, clearing the console, drawing diffrent shapes or symbols)
+*
+* History:
+* 09.09.25 BP Created
+******************************************************************************/
+
 #pragma once
 #include <iostream>
 #include <windows.h>
@@ -218,22 +231,22 @@ public:
 private:
 
 	//Saved special characters
-	static const unsigned char m_Square = (unsigned char)219;
-	static const unsigned char m_SquareLight = (unsigned char)176;
+	static const unsigned char M_SQUARE = (unsigned char)219;
+	static const unsigned char M_SQUARELIGHT = (unsigned char)176;
 
-	static const unsigned char m_DoubleLineCornerTopLeft = (unsigned char)201;
-	static const unsigned char m_DoubleLineCornerTopRight = (unsigned char)187;
-	static const unsigned char m_DoubleLineCornerBottomLeft = (unsigned char)200;
-	static const unsigned char m_DoubleLineCornerBottomRight = (unsigned char)188;
-	static const unsigned char m_DoubleLineHorizontal = (unsigned char)205;
-	static const unsigned char m_DoubleLineVertical = (unsigned char)186;
+	static const unsigned char M_DOUBLELINECORNERTOPLEFT = (unsigned char)201;
+	static const unsigned char M_DOUBLELINECORNERTOPRIGHT = (unsigned char)187;
+	static const unsigned char M_DOUBLELINECORNERBOTTOMLEFT = (unsigned char)200;
+	static const unsigned char M_DOUBLELINECORNERBOTTOMRIGHT = (unsigned char)188;
+	static const unsigned char M_DOUBLELINEHORIZONTAL = (unsigned char)205;
+	static const unsigned char M_DOUBLELINEVERTICAL = (unsigned char)186;
 
-	static const unsigned char m_SingleLineCornerTopLeft = (unsigned char)218;
-	static const unsigned char m_SingleLineCornerTopRight = (unsigned char)191;
-	static const unsigned char m_SingleLineCornerBottomLeft = (unsigned char)192;
-	static const unsigned char m_SingleLineCornerBottomRight = (unsigned char)217;
-	static const unsigned char m_SingleLineHorizontal = (unsigned char)196;
-	static const unsigned char m_SingleLineVertical = (unsigned char)179;
+	static const unsigned char M_SINGLELINECORNERTOPLEFT = (unsigned char)218;
+	static const unsigned char M_SINGLELINECORNERTOPRIGHT = (unsigned char)191;
+	static const unsigned char M_SINGLELINECORNERBOTTOMLEFT = (unsigned char)192;
+	static const unsigned char M_SINGLELINECORNERBOTTOMRIGHT = (unsigned char)217;
+	static const unsigned char M_SINGLELINEHORIZONTAL = (unsigned char)196;
+	static const unsigned char M_SINGLELINEVERTICAL = (unsigned char)179;
 
 };
 
